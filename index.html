@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Fly to a location based on scroll position</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+    #map {
+        position: fixed;
+        /* width: 50%; */
+        z-index: -1;
+    }
+    #features {
+        width: 50%;
+        /* margin-left: 50%; */
+        font-family: sans-serif;
+        overflow-y: scroll;
+        /* background-color: #fafafa; */
+
+    }
+    section {
+        padding: 25px 50px;
+        line-height: 25px;
+        margin-bottom: 100px;
+        border-bottom: 1px solid #ddd;
+        opacity: 0.25;
+        font-size: 13px;
+        background-color: #fafafa;
+      
+    }
+    section.active {
+        opacity: 1;
+    }
+    section:last-child {
+        border-bottom: none;
+        margin-bottom: 200px;
+    }
+
+    #title {
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+</style>
+
+<div id="map"></div>
+<div id="title"> police brutality in the us </div>
+<div id="features">
+    <section id="adam-toledo" class="active">
+        <h3>adam toledo</h3>
+        <p>
+          On March 29, 2021, Adam Toledo, a 13-year-old Latino boy, 
+          was shot and killed by Chicago Police Department officer 
+          Eric Stillman in the Little Village neighborhood on the 
+          West Side of Chicago. A few hours after the shooting, the
+          CPD described the incident in a tweet as an "armed confrontation."
+        </p>
+    </section>
+    <section id="daunte-wright">
+        <h3>daunte wright</h3>
+        <p>
+          On April 11, 2021, Daunte Wright, a 20-year-old African-American man,
+           was fatally shot by police officer Kimberly Potter during a traffic
+            stop and attempted arrest for an outstanding arrest warrant in Brooklyn
+             Center, Minnesota. After a brief struggle with officers, Wright was shot at close range.
+        </p>
+    </section>
+    <section id="makhia-bryant">
+        <h3>ma'khia bryant</h3>
+        <p>
+          On April 20, 2021, Ma'Khia Bryant, a 16-year-old African-American girl, 
+          was fatally shot by Columbus police officer Nicholas Reardon in Columbus, Ohio
+        </p>
+    </section>
+    
+    <div style="height: 1000px"> hello</div>
+
+</div>
+<section id="span-us">
+  <h3>police deaths across the united states</h3>
+  <p>
+      a serious problem
+  </p>
+</section>
+
+<div id="case-studies">
+  case studies go here
+</div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGFueWFuZyIsImEiOiJjanl0ZjJzaHUwM2dwM2xtaDJtNzlleWs4In0.3yIc4Cb3MrfjM8Kr1EoyhA';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: { lon: -87.71506, lat: 41.83819 },
+        zoom: 12.58,
+        pitch: 0.00,
+        bearing: 0.00
+    });
+
+    var chapters = {
+        'adam-toledo': {
+          center: { lon: -87.71506, lat: 41.83819 },
+          zoom: 12.58,
+          pitch: 0.00,
+          bearing: 0.00
+        },
+        'daunte-wright': {
+          duration: 3000,
+          center: { lon: -93.31144, lat: 45.06281 },
+          zoom: 13.00,
+          pitch: 0.00,
+          bearing: 0.00
+        },
+        'makhia-bryant': {
+            duration: 3000,
+            center: [-82.839667, 39.915722],
+            zoom: 13,
+        },
+        'span-us': {
+          duration: 3000,
+          center: { lon: -100.63789, lat: 39.96627 },
+          zoom: 4.09,
+          pitch: 0.00,
+          bearing: 0.00}
+
+    };
+
+    // On every scroll event, check which element is on screen
+    window.onscroll = function () {
+        var chapterNames = Object.keys(chapters);
+        for (var i = 0; i < chapterNames.length; i++) {
+            var chapterName = chapterNames[i];
+            if (isElementOnScreen(chapterName)) {
+                setActiveChapter(chapterName);
+                break;
+            }
+        }
+    };
+
+    var activeChapterName = 'adam-toledo';
+    function setActiveChapter(chapterName) {
+        if (chapterName === activeChapterName) return;
+
+        map.flyTo(chapters[chapterName]);
+
+        document.getElementById(chapterName).setAttribute('class', 'active');
+        document.getElementById(activeChapterName).setAttribute('class', '');
+
+        activeChapterName = chapterName;
+    }
+
+    function isElementOnScreen(id) {
+        var element = document.getElementById(id);
+        var bounds = element.getBoundingClientRect();
+        return bounds.top < window.innerHeight && bounds.bottom > 0;
+    }
+</script>
+
+</body>
+</html>
