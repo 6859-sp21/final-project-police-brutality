@@ -73,10 +73,23 @@ window.onscroll = function () {
 };
 
 var activeChapterName = 'adam-toledo';
+var activeMarker = new mapboxgl.Marker()
+  .setLngLat(chapters[activeChapterName].center)
+  .addTo(map);
+
+var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
+ 
 function setActiveChapter(chapterName) {
     if (chapterName === activeChapterName) return;
-
     map.flyTo(chapters[chapterName]);
+
+    // add markers for knownNames
+    activeMarker.remove()
+    if (knownNames.includes(chapterName)) {
+      activeMarker = new mapboxgl.Marker()
+      .setLngLat(chapters[chapterName].center)
+      .addTo(map);
+    }
 
     document.getElementById(chapterName).setAttribute('class', 'active');
     document.getElementById(activeChapterName).setAttribute('class', '');
