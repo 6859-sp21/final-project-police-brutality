@@ -11,7 +11,8 @@ var map = new mapboxgl.Map({
 map.on('load', function() {
   map.addSource('fatal-police-shootings', {
     'type': 'geojson',
-    'data': './data/fatal-police-shootings.geojson'
+    // 'data': './data/fatal-police-shootings.geojson'
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'  
   })
 
   map.addLayer({
