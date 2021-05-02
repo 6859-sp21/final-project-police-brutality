@@ -4,7 +4,7 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
 });
 
 function d3_test() {
-    testData = fpsData.slice(6200).filter(d => d.age !== "");
+    testData = fpsData.slice(6200).filter(d => d.age !== "" && d.name !== "");
 
     var barHeight = 25,
         width = 1000,
