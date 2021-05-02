@@ -18,17 +18,16 @@ body {
 
 #features {
     width: 50%;
-    /* margin-left: 50%; */
     font-family: sans-serif;
     overflow-y: scroll;
-    /* background-color: #fafafa; */
-
+    margin: auto;
+    margin-top: 100px
 }
 
 section {
     padding: 25px 50px;
     line-height: 25px;
-    margin-bottom: 100px;
+    margin-bottom: 250px;
     border-bottom: 1px solid #ddd;
     opacity: 0.25;
     font-size: 13px;
