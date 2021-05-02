@@ -7,6 +7,15 @@ var map = new mapboxgl.Map({
     pitch: 0.00,
     bearing: 0.00
 });
+// var geojson = require('./data/fatal-police-shootings.geojson');
+// console.log(geojson)
+// var myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(map);
+
+// map.addSource('some id', {
+//   type: 'geojson',
+//   data: 'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_ports.geojson'
+//   });
+
 
 var chapters = {
     'adam-toledo': {
