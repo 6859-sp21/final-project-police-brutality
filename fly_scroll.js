@@ -51,13 +51,34 @@ var chapters = {
         pitch: 0.00,
         bearing: 0.00
     },
+    'marginalized-communities': {
+      duration: 3000,
+      center: {lon: -100.63789, lat: 39.96627},
+      zoom: 4.09,
+      pitch: 0.00,
+      bearing: 0.00
+   },
+      'accountability': {
+        duration: 3000,
+        center: {lon: -100.63789, lat: 39.96627},
+        zoom: 4.09,
+        pitch: 0.00,
+        bearing: 0.00
+    },
     'data-incompleteness': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
         zoom: 4.09,
         pitch: 0.00,
         bearing: 0.00
-    }
+    }, 
+    'resources': {
+      duration: 3000, 
+      center: {lon: -100.63789, lat: 39.96627},
+      zoom: 4.09,
+      pitch: 0.00,
+      bearing: 0.00
+  }
 };
 
 // On every scroll event, check which element is on screen
