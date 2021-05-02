@@ -19,7 +19,7 @@ map.on('load', function() {
     'source': 'fatal-police-shootings',
     'type': 'circle',
     'paint': {
-      'circle-color': '#ff0000' 
+      'circle-color': '#ff0000'
     }})
   // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
 });
