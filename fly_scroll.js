@@ -7,15 +7,22 @@ var map = new mapboxgl.Map({
     pitch: 0.00,
     bearing: 0.00
 });
-// var geojson = require('./data/fatal-police-shootings.geojson');
-// console.log(geojson)
-// var myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(map);
 
-// map.addSource('some id', {
-//   type: 'geojson',
-//   data: 'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_ports.geojson'
-//   });
+map.on('load', function() {
+  map.addSource('fatal-police-shootings', {
+    'type': 'geojson',
+    'data': './data/fatal-police-shootings.geojson'
+  })
 
+  map.addLayer({
+    'id': 'fatal-deaths',
+    'source': 'fatal-police-shootings',
+    'type': 'circle',
+    'paint': {
+      'circle-color': '#ff0000' 
+    }})
+  // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
+});
 
 var chapters = {
     'adam-toledo': {
