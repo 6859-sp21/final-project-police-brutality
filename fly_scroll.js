@@ -33,6 +33,13 @@ var chapters = {
         zoom: 4.09,
         pitch: 0.00,
         bearing: 0.00
+    },
+    'data-incompleteness': {
+        duration: 3000,
+        center: {lon: -100.63789, lat: 39.96627},
+        zoom: 4.09,
+        pitch: 0.00,
+        bearing: 0.00
     }
 };
 
