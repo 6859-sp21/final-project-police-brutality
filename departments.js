@@ -33,13 +33,13 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
 });
 
 //Width and height of map
-let width = 960;
-let height = 500;
+let width = 600;
+let height = 400;
 
 // D3 Projection
 let projection = d3.geoAlbers()
 				   .translate([width/2, height/2])    // translate to center of screen
-				   .scale([1000]);          // scale things down so see entire US
+				   .scale([800]);          // scale things down so see entire US
 
 // Define path generator
 let path = d3.geoPath()               // path generator that will convert GeoJSON to SVG paths
@@ -48,11 +48,11 @@ let path = d3.geoPath()               // path generator that will convert GeoJSO
 
 // Define linear scale for output
 let color = d3.scaleSequential().domain([0,1])
-  .interpolator(d3.interpolatePuRd);
+  .interpolator(d3.interpolateReds);
 
 
 //Create SVG element and append map to the SVG
-let svg = d3.select("body")
+let svg = d3.select("div#d3-completeness")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
@@ -116,7 +116,7 @@ svg.selectAll("path")
 	}
 });
 // tooltips
-var tooltip = d3.select("body").append("div")
+var tooltip = d3.select("div#d3-completeness").append("div")
   .attr("class", "tooltip")
     .style("position", "absolute")
     .style("z-index", "10")
