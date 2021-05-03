@@ -9,7 +9,7 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
 
   $( "#dept_search_box" ).autocomplete({
     source: function(request, response) {
-       var results = $.ui.autocomplete.filter(dept_names, request.term);
+       let results = $.ui.autocomplete.filter(dept_names, request.term);
 
        response(results.slice(0, 100));
    },
@@ -33,62 +33,61 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
 });
 
 //Width and height of map
-var width = 960;
-var height = 500;
+let width = 960;
+let height = 500;
 
 // D3 Projection
-var projection = d3.geoAlbers()
+let projection = d3.geoAlbers()
 				   .translate([width/2, height/2])    // translate to center of screen
 				   .scale([1000]);          // scale things down so see entire US
 
 // Define path generator
-var path = d3.geoPath()               // path generator that will convert GeoJSON to SVG paths
+let path = d3.geoPath()               // path generator that will convert GeoJSON to SVG paths
 		  	 .projection(projection);  // tell path generator to use albersUsa projection
 
 
 // Define linear scale for output
-var myColor = d3.scaleLinear().domain([0,2])
-  .range(["white", "blue"])
+let color = d3.scaleSequential().domain([0,1])
+  .interpolator(d3.interpolatePuRd);
 
-var legendText = ["Cities Lived", "States Lived", "States Visited", "Nada"];
 
 //Create SVG element and append map to the SVG
-var svg = d3.select("body")
+let svg = d3.select("body")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
 
-// Append Div for tooltip to SVG
-var div = d3.select("body")
-		    .append("div")
-    		.attr("class", "tooltip")
-    		.style("opacity", 0);
+
+
 
 // Load in my states data!
-d3.csv("totalDepartments.csv", function(data) {
-color.domain([0,2]); // setting the range of the input data
+d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/totalDepartments.csv").then((data) => {
+color.domain([0,1]); // setting the range of the input data
 
 // Load GeoJSON data and merge with states data
-d3.json("data/us-states.json", function(json) {
+d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/us-states.json").then((json) => {
+
 
 // Loop through each state data value in the .csv file
-for (var i = 1; i < data.length; i++) {
+for (let i = 1; i < data.length; i++) {
 
 	// Grab State Name
-	var dataState = data[i].state;
+	let dataState = data[i].state.trim();
 
 	// Grab data value
-	var dataValue = data[i]['numberParticipating']/data[i]['Number of Agencies'];
+	let dataValue = parseInt(data[i]['numberParticipating'])/parseInt(data[i]['Number of agencies']);
+  if (dataValue > 1){
+    dataValue = 1;
+  }
 
 	// Find the corresponding state inside the GeoJSON
-	for (var j = 0; j < json.features.length; j++)  {
-		var jsonState = json.features[j].properties.name;
+	for (let j = 0; j < json.features.length; j++)  {
+		let jsonState = json.features[j].properties.name;
 
 		if (dataState == jsonState) {
 
 		// Copy the data value into the JSON
 		json.features[j].properties.ratio = dataValue;
-
 		// Stop looking through the JSON
 		break;
 		}
@@ -106,7 +105,7 @@ svg.selectAll("path")
 	.style("fill", function(d) {
 
 	// Get data value
-	var value = d.properties.visited;
+	let value = d.properties.ratio;
 
 	if (value) {
 	//If value exists…
@@ -116,29 +115,37 @@ svg.selectAll("path")
 	return "rgb(213,222,217)";
 	}
 });
+// tooltips
+var tooltip = d3.select("body").append("div")
+  .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("background", "white")
+    .style("padding", "10px")
+    .style("border-radius", "5px")
+    .style("width", "200px")
+svg.selectAll("path")
+  .on("mouseover", function(event, d) {
+    tooltip.transition()
+      .duration(200)
+      .style("opacity", 0.9)
+      .style("visibility", "visible")})
+  .on("mousemove", function(event, d) {
+    d3.select(this)
+      .style("opacity", 0.5)
+    tooltip.html( d.properties.name + ": " + d.properties.ratio.toFixed(2))
+      .style("top",(event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
+  })
+  .on("mouseout", function(){
+    tooltip.transition()
+      .duration(300)
+      .style("opacity", 0)
+      .style("visiblity", 'hidden')
+    d3.select(this)
+      .style("opacity", 1.0)})
 
-// Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
-var legend = d3.select("body").append("svg")
-      			.attr("class", "legend")
-     			.attr("width", 140)
-    			.attr("height", 200)
-   				.selectAll("g")
-   				.data(color.domain().slice().reverse())
-   				.enter()
-   				.append("g")
-     			.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-  	legend.append("rect")
-   		  .attr("width", 18)
-   		  .attr("height", 18)
-   		  .style("fill", color);
-
-  	legend.append("text")
-  		  .data(legendText)
-      	  .attr("x", 24)
-      	  .attr("y", 9)
-      	  .attr("dy", ".35em")
-      	  .text(function(d) { return d; });
 	});
 
 });
