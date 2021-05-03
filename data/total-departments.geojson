@@ -1,0 +1,733 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "U.S. Total",
+        "Number of agencies": "17985",
+        "Total Full Time Employees": "1133915",
+        "Employees Per 100,000 residents": "373",
+        "Total Sworn Personell": "765246",
+        "Sworn personnel Per 100,000 residents": "251",
+        "numberParticipating": "5001",
+        "numberEnrolled": "7084"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Alabama             ",
+        "Number of agencies": "417",
+        "Total Full Time Employees": "18364",
+        "Employees Per 100,000 residents": "393",
+        "Total Sworn Personell": "11631",
+        "Sworn personnel Per 100,000 residents": "249",
+        "numberParticipating": "5",
+        "numberEnrolled": "7"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Alaska              ",
+        "Number of agencies": "50",
+        "Total Full Time Employees": "2107",
+        "Employees Per 100,000 residents": "306",
+        "Total Sworn Personell": "1298",
+        "Sworn personnel Per 100,000 residents": "189",
+        "numberParticipating": "16",
+        "numberEnrolled": "16"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Arizona             ",
+        "Number of agencies": "140",
+        "Total Full Time Employees": "26112",
+        "Employees Per 100,000 residents": "402",
+        "Total Sworn Personell": "14591",
+        "Sworn personnel Per 100,000 residents": "224",
+        "numberParticipating": "14",
+        "numberEnrolled": "24"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Arkansas            ",
+        "Number of agencies": "367",
+        "Total Full Time Employees": "11165",
+        "Employees Per 100,000 residents": "389",
+        "Total Sworn Personell": "6779",
+        "Sworn personnel Per 100,000 residents": "236",
+        "numberParticipating": "8",
+        "numberEnrolled": "10"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "California          ",
+        "Number of agencies": "509",
+        "Total Full Time Employees": "126538",
+        "Employees Per 100,000 residents": "346",
+        "Total Sworn Personell": "79431",
+        "Sworn personnel Per 100,000 residents": "217",
+        "numberParticipating": "24",
+        "numberEnrolled": "36"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Colorado            ",
+        "Number of agencies": "246",
+        "Total Full Time Employees": "17989",
+        "Employees Per 100,000 residents": "365",
+        "Total Sworn Personell": "12069",
+        "Sworn personnel Per 100,000 residents": "245",
+        "numberParticipating": "160",
+        "numberEnrolled": "316"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Connecticut         ",
+        "Number of agencies": "143",
+        "Total Full Time Employees": "10530",
+        "Employees Per 100,000 residents": "301",
+        "Total Sworn Personell": "8281",
+        "Sworn personnel Per 100,000 residents": "236",
+        "numberParticipating": "10",
+        "numberEnrolled": "12"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Delaware            ",
+        "Number of agencies": "50",
+        "Total Full Time Employees": "3110",
+        "Employees Per 100,000 residents": "355",
+        "Total Sworn Personell": "2131",
+        "Sworn personnel Per 100,000 residents": "243",
+        "numberParticipating": "70",
+        "numberEnrolled": "70"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "District of Columbia",
+        "Number of agencies": "4",
+        "Total Full Time Employees": "5383",
+        "Employees Per 100,000 residents": "912",
+        "Total Sworn Personell": "4262",
+        "Sworn personnel Per 100,000 residents": "722",
+        "numberParticipating": "1",
+        "numberEnrolled": "1"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Florida             ",
+        "Number of agencies": "387",
+        "Total Full Time Employees": "81312",
+        "Employees Per 100,000 residents": "441",
+        "Total Sworn Personell": "46105",
+        "Sworn personnel Per 100,000 residents": "250",
+        "numberParticipating": "64",
+        "numberEnrolled": "74"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Georgia             ",
+        "Number of agencies": "628",
+        "Total Full Time Employees": "38926",
+        "Employees Per 100,000 residents": "401",
+        "Total Sworn Personell": "26551",
+        "Sworn personnel Per 100,000 residents": "274",
+        "numberParticipating": "51",
+        "numberEnrolled": "65"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Hawaii              ",
+        "Number of agencies": "7",
+        "Total Full Time Employees": "4097",
+        "Employees Per 100,000 residents": "318",
+        "Total Sworn Personell": "3234",
+        "Sworn personnel Per 100,000 residents": "251",
+        "numberParticipating": "1",
+        "numberEnrolled": "1"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Idaho               ",
+        "Number of agencies": "117",
+        "Total Full Time Employees": "5290",
+        "Employees Per 100,000 residents": "346",
+        "Total Sworn Personell": "3146",
+        "Sworn personnel Per 100,000 residents": "206",
+        "numberParticipating": "122",
+        "numberEnrolled": "134"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Illinois            ",
+        "Number of agencies": "877",
+        "Total Full Time Employees": "52838",
+        "Employees Per 100,000 residents": "411",
+        "Total Sworn Personell": "41277",
+        "Sworn personnel Per 100,000 residents": "321",
+        "numberParticipating": "49",
+        "numberEnrolled": "59"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Indiana             ",
+        "Number of agencies": "482",
+        "Total Full Time Employees": "19940",
+        "Employees Per 100,000 residents": "312",
+        "Total Sworn Personell": "13171",
+        "Sworn personnel Per 100,000 residents": "206",
+        "numberParticipating": "11",
+        "numberEnrolled": "16"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Iowa                ",
+        "Number of agencies": "392",
+        "Total Full Time Employees": "8896",
+        "Employees Per 100,000 residents": "297",
+        "Total Sworn Personell": "5830",
+        "Sworn personnel Per 100,000 residents": "195",
+        "numberParticipating": "13",
+        "numberEnrolled": "13"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Kansas              ",
+        "Number of agencies": "371",
+        "Total Full Time Employees": "11232",
+        "Employees Per 100,000 residents": "402",
+        "Total Sworn Personell": "7450",
+        "Sworn personnel Per 100,000 residents": "266",
+        "numberParticipating": "324",
+        "numberEnrolled": "340"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Kentucky            ",
+        "Number of agencies": "389",
+        "Total Full Time Employees": "10412",
+        "Employees Per 100,000 residents": "243",
+        "Total Sworn Personell": "7833",
+        "Sworn personnel Per 100,000 residents": "183",
+        "numberParticipating": "48",
+        "numberEnrolled": "528"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Louisiana           ",
+        "Number of agencies": "348",
+        "Total Full Time Employees": "25311",
+        "Employees Per 100,000 residents": "569",
+        "Total Sworn Personell": "18050",
+        "Sworn personnel Per 100,000 residents": "405",
+        "numberParticipating": "3",
+        "numberEnrolled": "4"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Maine               ",
+        "Number of agencies": "146",
+        "Total Full Time Employees": "3901",
+        "Employees Per 100,000 residents": "296",
+        "Total Sworn Personell": "2569",
+        "Sworn personnel Per 100,000 residents": "195",
+        "numberParticipating": "132",
+        "numberEnrolled": "132"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Maryland            ",
+        "Number of agencies": "142",
+        "Total Full Time Employees": "21267",
+        "Employees Per 100,000 residents": "376",
+        "Total Sworn Personell": "16013",
+        "Sworn personnel Per 100,000 residents": "283",
+        "numberParticipating": "7",
+        "numberEnrolled": "8"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Massachusetts       ",
+        "Number of agencies": "357",
+        "Total Full Time Employees": "25361",
+        "Employees Per 100,000 residents": "388",
+        "Total Sworn Personell": "18342",
+        "Sworn personnel Per 100,000 residents": "280",
+        "numberParticipating": "240",
+        "numberEnrolled": "247"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Michigan            ",
+        "Number of agencies": "571",
+        "Total Full Time Employees": "26395",
+        "Employees Per 100,000 residents": "264",
+        "Total Sworn Personell": "19009",
+        "Sworn personnel Per 100,000 residents": "190",
+        "numberParticipating": "453",
+        "numberEnrolled": "479"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Minnesota           ",
+        "Number of agencies": "448",
+        "Total Full Time Employees": "15458",
+        "Employees Per 100,000 residents": "296",
+        "Total Sworn Personell": "9667",
+        "Sworn personnel Per 100,000 residents": "185",
+        "numberParticipating": "353",
+        "numberEnrolled": "457"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Mississippi         ",
+        "Number of agencies": "342",
+        "Total Full Time Employees": "12408",
+        "Employees Per 100,000 residents": "422",
+        "Total Sworn Personell": "7707",
+        "Sworn personnel Per 100,000 residents": "262",
+        "numberParticipating": "4",
+        "numberEnrolled": "8"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Missouri            ",
+        "Number of agencies": "576",
+        "Total Full Time Employees": "22484",
+        "Employees Per 100,000 residents": "377",
+        "Total Sworn Personell": "14554",
+        "Sworn personnel Per 100,000 residents": "244",
+        "numberParticipating": "17",
+        "numberEnrolled": "22"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Montana             ",
+        "Number of agencies": "119",
+        "Total Full Time Employees": "3229",
+        "Employees Per 100,000 residents": "334",
+        "Total Sworn Personell": "1950",
+        "Sworn personnel Per 100,000 residents": "201",
+        "numberParticipating": "137",
+        "numberEnrolled": "137"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Nebraska            ",
+        "Number of agencies": "225",
+        "Total Full Time Employees": "5227",
+        "Employees Per 100,000 residents": "293",
+        "Total Sworn Personell": "3765",
+        "Sworn personnel Per 100,000 residents": "211",
+        "numberParticipating": "109",
+        "numberEnrolled": "330"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Nevada              ",
+        "Number of agencies": "76",
+        "Total Full Time Employees": "10097",
+        "Employees Per 100,000 residents": "386",
+        "Total Sworn Personell": "6643",
+        "Sworn personnel Per 100,000 residents": "254",
+        "numberParticipating": "8",
+        "numberEnrolled": "10"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New Hampshire       ",
+        "Number of agencies": "208",
+        "Total Full Time Employees": "3940",
+        "Employees Per 100,000 residents": "298",
+        "Total Sworn Personell": "2936",
+        "Sworn personnel Per 100,000 residents": "222",
+        "numberParticipating": "8",
+        "numberEnrolled": "11"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New Jersey          ",
+        "Number of agencies": "550",
+        "Total Full Time Employees": "43569",
+        "Employees Per 100,000 residents": "503",
+        "Total Sworn Personell": "33704",
+        "Sworn personnel Per 100,000 residents": "389",
+        "numberParticipating": "546",
+        "numberEnrolled": "616"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New Mexico          ",
+        "Number of agencies": "146",
+        "Total Full Time Employees": "7164",
+        "Employees Per 100,000 residents": "361",
+        "Total Sworn Personell": "5010",
+        "Sworn personnel Per 100,000 residents": "252",
+        "numberParticipating": "139",
+        "numberEnrolled": "139"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "New York            ",
+        "Number of agencies": "514",
+        "Total Full Time Employees": "95105",
+        "Employees Per 100,000 residents": "489",
+        "Total Sworn Personell": "66472",
+        "Sworn personnel Per 100,000 residents": "341",
+        "numberParticipating": "4",
+        "numberEnrolled": "10"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "North Carolina      ",
+        "Number of agencies": "504",
+        "Total Full Time Employees": "35140",
+        "Employees Per 100,000 residents": "380",
+        "Total Sworn Personell": "23442",
+        "Sworn personnel Per 100,000 residents": "254",
+        "numberParticipating": "23",
+        "numberEnrolled": "30"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "North Dakota        ",
+        "Number of agencies": "114",
+        "Total Full Time Employees": "1859",
+        "Employees Per 100,000 residents": "290",
+        "Total Sworn Personell": "1324",
+        "Sworn personnel Per 100,000 residents": "206",
+        "numberParticipating": "131",
+        "numberEnrolled": "131"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Ohio                ",
+        "Number of agencies": "831",
+        "Total Full Time Employees": "37295",
+        "Employees Per 100,000 residents": "324",
+        "Total Sworn Personell": "25992",
+        "Sworn personnel Per 100,000 residents": "225",
+        "numberParticipating": "160",
+        "numberEnrolled": "185"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Oklahoma            ",
+        "Number of agencies": "481",
+        "Total Full Time Employees": "13151",
+        "Employees Per 100,000 residents": "361",
+        "Total Sworn Personell": "8639",
+        "Sworn personnel Per 100,000 residents": "237",
+        "numberParticipating": "461",
+        "numberEnrolled": "461"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Oregon              ",
+        "Number of agencies": "174",
+        "Total Full Time Employees": "9431",
+        "Employees Per 100,000 residents": "249",
+        "Total Sworn Personell": "6695",
+        "Sworn personnel Per 100,000 residents": "177",
+        "numberParticipating": "74",
+        "numberEnrolled": "109"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Pennsylvania        ",
+        "Number of agencies": "1117",
+        "Total Full Time Employees": "33670",
+        "Employees Per 100,000 residents": "268",
+        "Total Sworn Personell": "27413",
+        "Sworn personnel Per 100,000 residents": "218",
+        "numberParticipating": "11",
+        "numberEnrolled": "15"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Rhode Island        ",
+        "Number of agencies": "48",
+        "Total Full Time Employees": "3462",
+        "Employees Per 100,000 residents": "329",
+        "Total Sworn Personell": "2828",
+        "Sworn personnel Per 100,000 residents": "268",
+        "numberParticipating": "28",
+        "numberEnrolled": "31"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "South Carolina      ",
+        "Number of agencies": "272",
+        "Total Full Time Employees": "16111",
+        "Employees Per 100,000 residents": "358",
+        "Total Sworn Personell": "11674",
+        "Sworn personnel Per 100,000 residents": "259",
+        "numberParticipating": "55",
+        "numberEnrolled": "272"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "South Dakota        ",
+        "Number of agencies": "155",
+        "Total Full Time Employees": "2669",
+        "Employees Per 100,000 residents": "332",
+        "Total Sworn Personell": "1636",
+        "Sworn personnel Per 100,000 residents": "203",
+        "numberParticipating": "135",
+        "numberEnrolled": "135"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Tennessee           ",
+        "Number of agencies": "375",
+        "Total Full Time Employees": "25697",
+        "Employees Per 100,000 residents": "412",
+        "Total Sworn Personell": "15976",
+        "Sworn personnel Per 100,000 residents": "256",
+        "numberParticipating": "296",
+        "numberEnrolled": "480"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Texas               ",
+        "Number of agencies": "1913",
+        "Total Full Time Employees": "96116",
+        "Employees Per 100,000 residents": "395",
+        "Total Sworn Personell": "59219",
+        "Sworn personnel Per 100,000 residents": "244",
+        "numberParticipating": "37",
+        "numberEnrolled": "75"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Utah                ",
+        "Number of agencies": "136",
+        "Total Full Time Employees": "8237",
+        "Employees Per 100,000 residents": "302",
+        "Total Sworn Personell": "4782",
+        "Sworn personnel Per 100,000 residents": "175",
+        "numberParticipating": "13",
+        "numberEnrolled": "142"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Vermont             ",
+        "Number of agencies": "69",
+        "Total Full Time Employees": "1612",
+        "Employees Per 100,000 residents": "260",
+        "Total Sworn Personell": "1103",
+        "Sworn personnel Per 100,000 residents": "178",
+        "numberParticipating": "3",
+        "numberEnrolled": "3"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Virginia            ",
+        "Number of agencies": "340",
+        "Total Full Time Employees": "29155",
+        "Employees Per 100,000 residents": "374",
+        "Total Sworn Personell": "22848",
+        "Sworn personnel Per 100,000 residents": "293",
+        "numberParticipating": "235",
+        "numberEnrolled": "455"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Washington          ",
+        "Number of agencies": "260",
+        "Total Full Time Employees": "17602",
+        "Employees Per 100,000 residents": "268",
+        "Total Sworn Personell": "11411",
+        "Sworn personnel Per 100,000 residents": "174",
+        "numberParticipating": "38",
+        "numberEnrolled": "41"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "West Virginia       ",
+        "Number of agencies": "233",
+        "Total Full Time Employees": "4411",
+        "Employees Per 100,000 residents": "243",
+        "Total Sworn Personell": "3382",
+        "Sworn personnel Per 100,000 residents": "186",
+        "numberParticipating": "2",
+        "numberEnrolled": "6"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Wisconsin           ",
+        "Number of agencies": "529",
+        "Total Full Time Employees": "20150",
+        "Employees Per 100,000 residents": "358",
+        "Total Sworn Personell": "13730",
+        "Sworn personnel Per 100,000 residents": "244",
+        "numberParticipating": "143",
+        "numberEnrolled": "174"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state": "Wyoming             ",
+        "Number of agencies": "90",
+        "Total Full Time Employees": "2990",
+        "Employees Per 100,000 residents": "561",
+        "Total Sworn Personell": "1691",
+        "Sworn personnel Per 100,000 residents": "317",
+        "numberParticipating": "5",
+        "numberEnrolled": "7"
+      },
+      "geometry": null
+    }
+  ]
+}
