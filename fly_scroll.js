@@ -1,7 +1,9 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoidGFueWFuZyIsImEiOiJjanl0ZjJzaHUwM2dwM2xtaDJtNzlleWs4In0.3yIc4Cb3MrfjM8Kr1EoyhA';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/mapbox/dark-v9',
+    // style: 'mapbox://styles/mapbox/streets-v11',
+    // style: https://www.mapbox.com/maps/dark
     center: {lon: -87.71506, lat: 41.83819},
     zoom: 12.58,
     pitch: 0.00,
