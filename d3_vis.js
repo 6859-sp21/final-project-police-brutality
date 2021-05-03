@@ -5,26 +5,27 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
 });
 
 function d3_racism() {
-  var width = 960, 
+  var width = 500, 
     height = 500, 
     radius = Math.min(width, height) / 2;
 
-  var svg = d3.select("#d3-racism")
-    .append("svg")
+  var svg = d3.select("svg#d3-racism")
       .attr("width", width)
       .attr("height", height)
     .append("g")
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
   
-  var data = {"White": 3972, "Black": 2288, "Hispanic": 1594}
+  var data = [{race: "White", pop: 3972},
+              {race: "Black", pop: 2288},
+              {race: "Hispanic", pop: 1594}];
   
   var color = d3.scaleOrdinal()
     .domain(data)
     .range(d3.schemeSet2);
 
   var pie = d3.pie()
-    .value(function(d) {return d.value})
-  var data_ready = pie(d3.entries(data))
+    .value(function(d) {return d.pop})
+  var data_ready = pie(data)
 
   // shape helper to build arcs:
   var arcGenerator = d3.arc()
