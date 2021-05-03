@@ -1,6 +1,6 @@
 d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings-data.csv").then((data) => {
     fpsData = data;
-    d3_test();
+    // d3_test();
     d3_racism();
 });
 
