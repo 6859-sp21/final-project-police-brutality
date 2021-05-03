@@ -132385,33 +132385,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "5618",
-        "name": "Gary Brown",
-        "date": "2020-03-07",
-        "manner_of_death": "shot",
-        "armed": "vehicle",
-        "age": "43",
-        "gender": "M",
-        "race": "W",
-        "city": "Harrison Township",
-        "state": "OH",
-        "signs_of_mental_illness": "False",
-        "threat_level": "attack",
-        "flee": "Car",
-        "body_camera": "False",
-        "is_geocoding_exact": "True"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -85.323,
-          51.254
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "5608",
         "name": "Charles Harwood",
         "date": "2020-03-08",
