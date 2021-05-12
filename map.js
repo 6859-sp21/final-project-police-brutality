@@ -22,7 +22,7 @@ map.on('load', function() {
     'source': 'fatal-police-shootings',
     'type': 'circle',
     'paint': {
-      'circle-color': '#ff0000'
+      'circle-color': '#ff0000',
     }})
   // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
 });
@@ -41,11 +41,6 @@ var chapters = {
         pitch: 0.00,
         bearing: 0.00
     },
-    // 'makhia-bryant': {
-    //     duration: 3000,
-    //     center: [-82.839667, 39.915722],
-    //     zoom: 13
-    // },
     'span-us': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
