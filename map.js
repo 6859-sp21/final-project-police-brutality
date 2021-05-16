@@ -37,23 +37,48 @@ map.on('load', function() {
       },
       'circle-color': '#e55e5e',
       
-    }})
+    }
+  })
 
-    map.addLayer({
-      'id': 'participating',
-      'source': 'total-departments',
-      'type': 'fill',
-      'paint': {
-        'fill-color': [
-          'interpolate',
-          ['linear'],
-          ["/", ['get', 'numberParticipating'], ['get', 'Number of agencies']],
-          0,
-          '#fff5f0',
-          1,
-          '#67000d'
-        ],
-      }})
+  map.addLayer({
+    'id': 'participating',
+    'source': 'total-departments',
+    'type': 'fill',
+    'paint': {
+      'fill-color': [
+        'interpolate',
+        ['linear'],
+        ["/", ['get', 'numberParticipating'], ['get', 'Number of agencies']],
+        0,
+        '#fff5f0',
+        1,
+        '#67000d'
+      ],
+    }
+  })
+
+  map.addLayer({
+    'id': 'race',
+    'source': 'fatal-police-shootings',
+    'type': 'circle',
+    'paint': {
+      'circle-opacity': 0,
+      'circle-opacity-transition': {duration: 2000},
+    'circle-color': [
+      'match',
+      ['get', 'race'],
+      'W',
+      '#fbb03b',
+      'B',
+      '#223b53',
+      'H',
+      '#e55e5e',
+      'A',
+      '#3bb2d0',
+      /* other */ '#ccc'
+        ]
+    }
+  })
 });
 
 var chapters = {
@@ -114,7 +139,6 @@ window.onscroll = function () {
         var chapterName = chapterNames[i];
         if (isElementOnScreen(chapterName)) {
             setActiveChapter(chapterName);
-            raceChange(chapterName)
             triggerMapChange(chapterName);
             break;
         }
@@ -127,46 +151,6 @@ var activeMarker = new mapboxgl.Marker()
   .addTo(map);
 
 var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
-function raceChange(chapterName) {
-  if (chapterName === 'marginalized-communities') {
-    byRaceLayer = map.addLayer({
-      'id': 'race',
-      'source': 'fatal-police-shootings',
-      'type': 'circle',
-      'paint': {
-        'circle-opacity': 0,
-        'circle-opacity-transition': {duration: 2000},
-      'circle-color': [
-        'match',
-        ['get', 'race'],
-        'W',
-        '#fbb03b',
-        'B',
-        '#223b53',
-        'H',
-        '#e55e5e',
-        'A',
-        '#3bb2d0',
-        /* other */ '#ccc'
-          ]
-    }})
-    setTimeout(function() {
-      map.setPaintProperty(
-        'race',
-        'circle-opacity',
-        1 
-      )
-    })
-  } else {
-      setTimeout(function() {
-        map.setPaintProperty(
-          'race',
-          'circle-opacity',
-          0
-        )
-      })
-    }
-}
 
 function triggerMapChange(chapterName) {
   if (chapterName === "data-incompleteness") {
@@ -180,6 +164,14 @@ function triggerMapChange(chapterName) {
       'visibility',
       'visible'
     );
+  } else if (chapterName === "marginalized-communities") {
+    setTimeout(function() {
+      map.setPaintProperty(
+        'race',
+        'circle-opacity',
+        1 
+      )
+    })
   } else {
     map.setLayoutProperty(
       'participating',
@@ -191,6 +183,13 @@ function triggerMapChange(chapterName) {
       'visibility',
       'visible'
     );
+    setTimeout(function() {
+      map.setPaintProperty(
+        'race',
+        'circle-opacity',
+        0
+      )
+    })
   }
 }
 function setActiveChapter(chapterName) {

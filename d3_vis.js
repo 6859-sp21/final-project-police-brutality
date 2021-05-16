@@ -1,7 +1,7 @@
 
 Promise.all([
   d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings-data.csv"),
-  d3.json("data/race-population.json"),
+  d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json"),
 ]).then(function(data) {
   // files[0] will contain file1.csv
   // files[1] will contain file2.csv
@@ -76,7 +76,7 @@ function d3_racism() {
     return (t) => arc(i(t));
   
   }
-  d3.json("data/race-population.json", type).then(data => {  
+  d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json", type).then(data => {  
     var count = 0; 
     d3.selectAll("input")
       .on("change", update);
