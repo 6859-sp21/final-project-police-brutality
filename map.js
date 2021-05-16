@@ -10,12 +10,17 @@ var map = new mapboxgl.Map({
     bearing: 0.00
 });
 
+// add Washington Post dataset
 map.on('load', function() {
   map.addSource('fatal-police-shootings', {
     'type': 'geojson',
-    // 'data': './data/fatal-police-shootings.geojson'
     'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'  
   
+  })
+
+  map.addSource('state-data', {
+    'type': 'geojson',
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/stateData.geojson'  
   })
 
   map.addLayer({
@@ -31,8 +36,49 @@ map.on('load', function() {
         ]
       },
       'circle-color': '#e55e5e',
-      
     }})
+
+    byRaceLayer = map.addLayer({
+      'id': 'race',
+      'source': 'fatal-police-shootings',
+      'type': 'circle',
+      'paint': {
+        'circle-opacity': 0,
+        'circle-opacity-transition': {duration: 2000},
+      'circle-color': [
+        'match',
+        ['get', 'race'],
+        'W',
+        '#fbb03b',
+        'B',
+        '#223b53',
+        'H',
+        '#e55e5e',
+        'A',
+        '#3bb2d0',
+        /* other */ '#ccc'
+          ]
+    }})
+
+    dataIncompleteness = map.addLayer({
+      'id': 'density',
+      'source': 'state-data',
+      'type': 'fill',
+      'paint': {
+        'fill-color': [
+          'interpolate',
+          ['linear'],
+          ['get', 'density'],
+          0,
+          '#F2F12D',
+          50,
+          '#EED322',
+  
+        ],
+        'fill-opacity': 0
+      }})
+
+    
   // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
 });
 
@@ -64,6 +110,13 @@ var chapters = {
       pitch: 0.00,
       bearing: 0.00
    },
+   'sickle-cell': {
+    duration: 3000,
+    center: { lon: -80.07853, lat: 34.97325 },
+    zoom: 15.37,
+    pitch: 0.00,
+    bearing: 0.00
+    },
       'accountability': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
@@ -109,27 +162,6 @@ var activeMarker = new mapboxgl.Marker()
 var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
 function raceChange(chapterName) {
   if (chapterName === 'marginalized-communities') {
-    byRaceLayer = map.addLayer({
-      'id': 'race',
-      'source': 'fatal-police-shootings',
-      'type': 'circle',
-      'paint': {
-        'circle-opacity': 0,
-        'circle-opacity-transition': {duration: 2000},
-      'circle-color': [
-        'match',
-        ['get', 'race'],
-        'W',
-        '#fbb03b',
-        'B',
-        '#223b53',
-        'H',
-        '#e55e5e',
-        'A',
-        '#3bb2d0',
-        /* other */ '#ccc'
-          ]
-    }})
     setTimeout(function() {
       map.setPaintProperty(
         'race',
@@ -150,28 +182,21 @@ function raceChange(chapterName) {
 
 function triggerMapChange(chapterName) {
   if (chapterName === "data-incompleteness") {
-    map.addSource('state-data', {
-      'type': 'geojson',
-      'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/stateData.geojson'  
-    })
-    dataIncompleteness = map.addLayer({
-      'id': 'density',
-      'source': 'state-data',
-      'type': 'fill',
-      'paint': {
-        'fill-color': [
-          'interpolate',
-          ['linear'],
-          ['get', 'density'],
-          0,
-          '#F2F12D',
-          50,
-          '#EED322'
-        ],
-      }})
+    setTimeout(function() {
+        map.setPaintProperty(
+          'density',
+          'fill-opacity',
+          1 
+        )
+      })
   } else {
-    map.removeSource('state-data')
-    map.removeLayer('density')
+    setTimeout(function() {
+      map.setPaintProperty(
+        'density',
+        'fill-opacity',
+        0
+      )
+    })
   }
 }
 function setActiveChapter(chapterName) {
