@@ -109,13 +109,13 @@ var chapters = {
       pitch: 0.00,
       bearing: 0.00
    },
-   'sickle-cell': {
-    duration: 3000,
-    center: { lon: -80.07853, lat: 34.97325 },
-    zoom: 15.37,
-    pitch: 0.00,
-    bearing: 0.00
-    },
+    'sickle-cell': {
+      duration: 3000,
+      center: { lon: -80.07853, lat: 34.97325 },
+      zoom: 15.37,
+      pitch: 0.00,
+      bearing: 0.00
+      },
       'accountability': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},

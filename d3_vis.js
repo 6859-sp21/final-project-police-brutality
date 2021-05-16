@@ -52,13 +52,7 @@ function d3_racism() {
     return (t) => arc(i(t));
   
   }
-<<<<<<< HEAD
-
-
-  d3.json("data/race-population.json", type).then(data => {  
-=======
   d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json", type).then(data => {  
->>>>>>> d50b976ce5de25e4113ccac39fcc41c6157ed775
     var count = 0; 
     d3.selectAll("input")
       .on("change", update);
