@@ -11,26 +11,40 @@ var map = new mapboxgl.Map({
 });
 
 map.on('load', function() {
-  map.addSource('fatal-police-shootings', {
+  // map.addSource('fatal-police-shootings', {
+  //   'type': 'geojson',
+  //   // 'data': './data/fatal-police-shootings.geojson'
+  //   'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'  
+  // })
+
+  map.addSource('state-data', {
     'type': 'geojson',
     // 'data': './data/fatal-police-shootings.geojson'
-    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'  
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/stateData.geojson'  
   })
 
+  // map.addLayer({
+  //   'id': 'fatal-deaths',
+  //   'source': 'fatal-police-shootings',
+  //   'type': 'circle',
+  //   'paint': {
+  //     'circle-color': '#ff0000',
+  //   }})
+
   map.addLayer({
-    'id': 'fatal-deaths',
-    'source': 'fatal-police-shootings',
-    'type': 'circle',
+    'id': 'density',
+    'source': 'state-data',
+    'type': 'fill',
     'paint': {
-      'circle-radius': {
-        'base': 5,
-        'stops': [
-          [12, 2],
-          [22, 180]
-        ]
-      },
-      'circle-color': '#e55e5e',
-      
+      'fill-color': [
+        'interpolate',
+        ['linear'],
+        ['get', 'density'],
+        0,
+        '#F2F12D',
+        50,
+        '#EED322'
+      ],
     }})
   // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
 });
