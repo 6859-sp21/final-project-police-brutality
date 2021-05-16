@@ -18,6 +18,11 @@ map.on('load', function() {
   
   })
 
+  map.addSource('total-departments', {
+    'type': 'geojson',
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/totalDepartments.geojson'  
+  })
+
   map.addLayer({
     'id': 'fatal-deaths',
     'source': 'fatal-police-shootings',
@@ -33,7 +38,22 @@ map.on('load', function() {
       'circle-color': '#e55e5e',
       
     }})
-  // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
+
+    map.addLayer({
+      'id': 'participating',
+      'source': 'total-departments',
+      'type': 'fill',
+      'paint': {
+        'fill-color': [
+          'interpolate',
+          ['linear'],
+          ["/", ['get', 'numberParticipating'], ['get', 'Number of agencies']],
+          0,
+          '#fff5f0',
+          1,
+          '#67000d'
+        ],
+      }})
 });
 
 var chapters = {
@@ -109,28 +129,27 @@ var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
  
 function triggerMapChange(chapterName) {
   if (chapterName === "data-incompleteness") {
-    map.addSource('state-data', {
-      'type': 'geojson',
-      'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/stateData.geojson'  
-    })
-    dataIncompleteness = map.addLayer({
-      'id': 'density',
-      'source': 'state-data',
-      'type': 'fill',
-      'paint': {
-        'fill-color': [
-          'interpolate',
-          ['linear'],
-          ['get', 'density'],
-          0,
-          '#F2F12D',
-          50,
-          '#EED322'
-        ],
-      }})
+    map.setLayoutProperty(
+      'fatal-deaths',
+      'visibility',
+      'none'
+    );
+    map.setLayoutProperty(
+      'participating',
+      'visibility',
+      'visible'
+    );
   } else {
-    map.removeSource('state-data')
-    map.removeLayer('density')
+    map.setLayoutProperty(
+      'participating',
+      'visibility',
+      'none'
+    );
+    map.setLayoutProperty(
+      'fatal-deaths',
+      'visibility',
+      'visible'
+    );
   }
 }
 function setActiveChapter(chapterName) {
