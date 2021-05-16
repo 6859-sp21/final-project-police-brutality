@@ -11,40 +11,27 @@ var map = new mapboxgl.Map({
 });
 
 map.on('load', function() {
-  // map.addSource('fatal-police-shootings', {
-  //   'type': 'geojson',
-  //   // 'data': './data/fatal-police-shootings.geojson'
-  //   'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'  
-  // })
-
-  map.addSource('state-data', {
+  map.addSource('fatal-police-shootings', {
     'type': 'geojson',
     // 'data': './data/fatal-police-shootings.geojson'
-    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/stateData.geojson'  
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'  
+  
   })
 
-  // map.addLayer({
-  //   'id': 'fatal-deaths',
-  //   'source': 'fatal-police-shootings',
-  //   'type': 'circle',
-  //   'paint': {
-  //     'circle-color': '#ff0000',
-  //   }})
-
   map.addLayer({
-    'id': 'density',
-    'source': 'state-data',
-    'type': 'fill',
+    'id': 'fatal-deaths',
+    'source': 'fatal-police-shootings',
+    'type': 'circle',
     'paint': {
-      'fill-color': [
-        'interpolate',
-        ['linear'],
-        ['get', 'density'],
-        0,
-        '#F2F12D',
-        50,
-        '#EED322'
-      ],
+      'circle-radius': {
+        'base': 5,
+        'stops': [
+          [12, 2],
+          [22, 180]
+        ]
+      },
+      'circle-color': '#e55e5e',
+      
     }})
   // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
 });
@@ -107,6 +94,7 @@ window.onscroll = function () {
         var chapterName = chapterNames[i];
         if (isElementOnScreen(chapterName)) {
             setActiveChapter(chapterName);
+            triggerMapChange(chapterName);
             break;
         }
     }
@@ -119,6 +107,32 @@ var activeMarker = new mapboxgl.Marker()
 
 var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
  
+function triggerMapChange(chapterName) {
+  if (chapterName === "data-incompleteness") {
+    map.addSource('state-data', {
+      'type': 'geojson',
+      'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/stateData.geojson'  
+    })
+    dataIncompleteness = map.addLayer({
+      'id': 'density',
+      'source': 'state-data',
+      'type': 'fill',
+      'paint': {
+        'fill-color': [
+          'interpolate',
+          ['linear'],
+          ['get', 'density'],
+          0,
+          '#F2F12D',
+          50,
+          '#EED322'
+        ],
+      }})
+  } else {
+    map.removeSource('state-data')
+    map.removeLayer('density')
+  }
+}
 function setActiveChapter(chapterName) {
     if (chapterName === activeChapterName) return;
     map.flyTo(chapters[chapterName]);
@@ -130,7 +144,7 @@ function setActiveChapter(chapterName) {
       .setLngLat(chapters[chapterName].center)
       .addTo(map);
     }
-
+    
     document.getElementById(chapterName).setAttribute('class', 'active');
     document.getElementById(activeChapterName).setAttribute('class', '');
 
