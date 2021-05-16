@@ -22,7 +22,15 @@ map.on('load', function() {
     'source': 'fatal-police-shootings',
     'type': 'circle',
     'paint': {
-      'circle-color': '#ff0000',
+      'circle-radius': {
+        'base': 5,
+        'stops': [
+          [12, 2],
+          [22, 180]
+        ]
+      },
+      'circle-color': '#e55e5e',
+      
     }})
   // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
 });

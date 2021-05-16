@@ -1,0 +1,18 @@
+{
+  "killings":  [
+    {"race": "White", "count": 3972},
+    {"race": "Black", "count": 2288},
+    {"race": "Hispanic", "count": 1594},
+    {"race": "Asian", "count": 135},
+    {"race": "Native American", "count": 128},
+    {"race": "Pacific Island", "count": 51}
+  ],
+  "population": [
+    {"race": "White", "count": 197271953},
+    {"race": "Black", "count":  40045222},
+    {"race": "Hispanic", "count": 60724312},
+    {"race": "Asian", "count": 18381413},
+    {"race": "Native American", "count": 2297677},
+    {"race": "Pacific Island", "count": 65647905}
+  ]
+}

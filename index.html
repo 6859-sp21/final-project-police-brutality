@@ -13,19 +13,24 @@
         <div id="map"></div>
         <!-- <div id="title">police brutality in the us</div> -->
         <div id="features">
-            <section id="adam-toledo" class="active">
-                <h3>adam toledo</h3>
-                <p>
-                    On March 29, 2021, Adam Toledo, a 13-year-old Latino boy,
-                    was shot and killed by Chicago Police Department officer
-                    Eric Stillman in the Little Village neighborhood on the
-                    West Side of Chicago. A few hours after the shooting, the
-                    CPD described the incident in a tweet as an "armed confrontation."
-                </p>
-                <!-- <svg id="d3_test"></svg> -->
+            <section id="adam-toledo" class="active" class="row">
+                <h3>Adam Toledo</h3>
+                <div class="row">
+                  <div class="column">
+                    <p>On March 29, 2021, Adam Toledo, a 13-year-old Latino boy,
+                      was shot and killed by Chicago Police Department officer
+                      Eric Stillman in the Little Village neighborhood on the
+                      West Side of Chicago. A few hours after the shooting, the
+                      CPD described the incident in a tweet as an "armed confrontation."
+                    </p>
+                  </div>
+                  <div class="column">
+                    <p>testing column, want to include picture of Adam Toledo</p>
+                  </div>
+                </div>
             </section>
             <section id="daunte-wright">
-                <h3>daunte wright</h3>
+                <h3>Daunte Wright</h3>
                 <p>
                     On April 11, 2021, Daunte Wright, a 20-year-old African-American man,
                     was fatally shot by police officer Kimberly Potter during a traffic
@@ -33,24 +38,17 @@
                     Center, Minnesota. After a brief struggle with officers, Wright was shot at close range.
                 </p>
             </section>
-            <!-- <section id="makhia-bryant">
-                <h3>ma'khia bryant</h3>
-                <p>
-                    On April 20, 2021, Ma'Khia Bryant, a 16-year-old African-American girl,
-                    was fatally shot by Columbus police officer Nicholas Reardon in Columbus, Ohio
-                </p>
-            </section> -->
             <section id="span-us">
                 <h3>Police Deaths Across the United States</h3>
                 <p>Each dot on the map underneath represents a fatal police shooting, from
                   the Washington Post's <a href="https://github.com/washingtonpost/data-police-shootings">Fatal Force</a>
                   dataset, containing records of every fatal shooting in the United States by a police officer in the line of duty
                   since January 1st, 2015.
-                  <br>
+                  <br><br>
                   It barely begins to capture the full picture of police brutality in the United States – for example, George Floyd, whose murder sparked
                   nationwide and global protests for the #BlackLivesMatter movement and against police brutality, isn't in this dataset because there was
                   no gun involved.
-                  <br>
+                  <br><br>
                   The people and stories above might be familiar to you – they've flashed across major news outlets along with countless others, to the point that
                   we might all be a little desensitized to the issues of police brutality. However, we need to better understand how serious of an issue this is
                   beyond the sheer number of people killed.
@@ -59,12 +57,25 @@
             </section>
             <section id="marginalized-communities">
               <h3>Police brutality disproportionately affects marginalized communities</h3>
-              <p>racism, mental health awareness, poverty</p>
-              <form>
-                <label><input type="radio" name="dataset" value="apples" checked> race </label>
-                <label><input type="radio" name="dataset" value="oranges"> overall population</label>
-              </form>
-              <svg id="d3-racism"></svg>
+              <div class="row">
+                <div class="column">
+                  <div id="d3-racism" >
+                    <form>
+                      <label><input type="radio" name="dataset" value="killings" checked> race </label>
+                      <label><input type="radio" name="dataset" value="population"> overall population</label>
+                    </form>
+                  </div>
+                </div>
+                <div class="column" style="padding-left: 30px">
+                  <p>While White Americans accounted for the majority of police brutality deaths, we can't just focus on one version of this statistic. 
+                    We need to also consider the relative population within the United States.
+                  </p>
+                  <p>It might make a little more sense that White Americans constitute more of the data, because there are significantly more
+                    White Americans in the United States. However, Black and brown communities are disproportionately more affected by police brutality, collectively
+                    making up x% of police brutality deaths while only comprising y% of the total population. 
+                  </p>
+                </div>
+              </div>
             </section>
             <section id="accountability">
               <h3>Stagnated avenues to change</h3>
