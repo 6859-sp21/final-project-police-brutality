@@ -18,9 +18,9 @@ map.on('load', function() {
   
   })
 
-  map.addSource('state-data', {
+  map.addSource('total-departments', {
     'type': 'geojson',
-    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/stateData.geojson'  
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/totalDepartments.geojson'  
   })
 
   map.addLayer({
@@ -36,50 +36,49 @@ map.on('load', function() {
         ]
       },
       'circle-color': '#e55e5e',
-    }})
+      
+    }
+  })
 
-    byRaceLayer = map.addLayer({
-      'id': 'race',
-      'source': 'fatal-police-shootings',
-      'type': 'circle',
-      'paint': {
-        'circle-opacity': 0,
-        'circle-opacity-transition': {duration: 2000},
-      'circle-color': [
-        'match',
-        ['get', 'race'],
-        'W',
-        '#fbb03b',
-        'B',
-        '#223b53',
-        'H',
-        '#e55e5e',
-        'A',
-        '#3bb2d0',
-        /* other */ '#ccc'
-          ]
-    }})
+  map.addLayer({
+    'id': 'participating',
+    'source': 'total-departments',
+    'type': 'fill',
+    'paint': {
+      'fill-color': [
+        'interpolate',
+        ['linear'],
+        ["/", ['get', 'numberParticipating'], ['get', 'Number of agencies']],
+        0,
+        '#fff5f0',
+        1,
+        '#67000d'
+      ],
+    }
+  })
 
-    dataIncompleteness = map.addLayer({
-      'id': 'density',
-      'source': 'state-data',
-      'type': 'fill',
-      'paint': {
-        'fill-color': [
-          'interpolate',
-          ['linear'],
-          ['get', 'density'],
-          0,
-          '#F2F12D',
-          50,
-          '#EED322',
-  
-        ],
-        'fill-opacity': 0
-      }})
-
-    
-  // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
+  map.addLayer({
+    'id': 'race',
+    'source': 'fatal-police-shootings',
+    'type': 'circle',
+    'paint': {
+      'circle-opacity': 0,
+      'circle-opacity-transition': {duration: 2000},
+    'circle-color': [
+      'match',
+      ['get', 'race'],
+      'W',
+      '#fbb03b',
+      'B',
+      '#223b53',
+      'H',
+      '#e55e5e',
+      'A',
+      '#3bb2d0',
+      /* other */ '#ccc'
+        ]
+    }
+  })
 });
 
 var chapters = {
@@ -147,7 +146,6 @@ window.onscroll = function () {
         var chapterName = chapterNames[i];
         if (isElementOnScreen(chapterName)) {
             setActiveChapter(chapterName);
-            raceChange(chapterName)
             triggerMapChange(chapterName);
             break;
         }
@@ -160,8 +158,20 @@ var activeMarker = new mapboxgl.Marker()
   .addTo(map);
 
 var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
-function raceChange(chapterName) {
-  if (chapterName === 'marginalized-communities') {
+
+function triggerMapChange(chapterName) {
+  if (chapterName === "data-incompleteness") {
+    map.setLayoutProperty(
+      'fatal-deaths',
+      'visibility',
+      'none'
+    );
+    map.setLayoutProperty(
+      'participating',
+      'visibility',
+      'visible'
+    );
+  } else if (chapterName === "marginalized-communities") {
     setTimeout(function() {
       map.setPaintProperty(
         'race',
@@ -170,30 +180,20 @@ function raceChange(chapterName) {
       )
     })
   } else {
-      setTimeout(function() {
-        map.setPaintProperty(
-          'race',
-          'circle-opacity',
-          0
-        )
-      })
-    }
-}
-
-function triggerMapChange(chapterName) {
-  if (chapterName === "data-incompleteness") {
-    setTimeout(function() {
-        map.setPaintProperty(
-          'density',
-          'fill-opacity',
-          1 
-        )
-      })
-  } else {
+    map.setLayoutProperty(
+      'participating',
+      'visibility',
+      'none'
+    );
+    map.setLayoutProperty(
+      'fatal-deaths',
+      'visibility',
+      'visible'
+    );
     setTimeout(function() {
       map.setPaintProperty(
-        'density',
-        'fill-opacity',
+        'race',
+        'circle-opacity',
         0
       )
     })
