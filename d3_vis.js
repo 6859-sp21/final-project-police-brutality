@@ -1,7 +1,7 @@
 
 Promise.all([
   d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings-data.csv"),
-  d3.json("data/race-population.json"),
+  d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json"),
 ]).then(function(data) {
   // files[0] will contain file1.csv
   // files[1] will contain file2.csv
@@ -13,7 +13,6 @@ Promise.all([
 })
 
 function d3_racism() {
-
   var width = 400, 
     height = 400, 
     innerRadius = 50,
@@ -31,37 +30,15 @@ function d3_racism() {
     .append('g')
     .attr('transform', `translate(${radius * 2 + 20}, 0)`)
 
-  legend
-    .selectAll(null)
-    .data(raceData)
-    .enter()
-    .append('rect')
-    .attr('y', d => labelHeight * d.index * 1.8)
-    .attr('width', labelHeight)
-    .attr('height', labelHeight)
-    .attr('fill', d => colorSeq(d.index))
-    .attr('stroke', 'grey')
-    .style('stroke-width', '1px');
-
-  legend
-    .selectAll(null)
-    .data(raceData)
-    .enter()
-    .append('text')
-    .text(d => d.data.key)
-    .attr('x', labelHeight * 1.2)
-    .attr('y', d => labelHeight * d.index * 1.8 + labelHeight)
-    .style('font-family', 'sans-serif')
-    .style('font-size', `${labelHeight}px`);
-
-  var color = d3.scaleOrdinal(["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"]);
+  // var color = d3.scaleOrdinal(["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"]);
+  var color = d3.scaleOrdinal(["#a6cee3","#fb9a99","#b2df8a", "#fdbf6f","#cab2d6","#ffff99"])
 
   var pie = d3.pie()
     .value(d => d.count)
     .sort(null);
 
   var arc = d3.arc()
-    .innerRadius(0)
+    .innerRadius(innerRadius)
     .outerRadius(radius)
 
   function type(d) {
@@ -76,7 +53,7 @@ function d3_racism() {
     return (t) => arc(i(t));
   
   }
-  d3.json("data/race-population.json", type).then(data => {  
+  d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json", type).then(data => {  
     var count = 0; 
     d3.selectAll("input")
       .on("change", update);
@@ -104,6 +81,37 @@ function d3_racism() {
             .each(function(d) { this._current = d; });
     }
     update();
+
+     // tooltips
+  var tooltip = d3.select("#d3-racism").append("div")
+  .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("background", "white")
+    .style("padding", "10px")
+    .style("border-radius", "5px")
+    .style("width", "200px")
+
+  svg.selectAll("path")
+    .on("mouseover", function(event, d) {
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", 0.9)
+        .style("visibility", "visible")})
+    .on("mousemove", function(event, d) {
+      d3.select(this)
+        .style("opacity", 0.5)
+      tooltip.html(d.data.race + ": " + d.data.percentage + "%")
+        .style("top",(event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
+    })
+    .on("mouseout", function(){
+      tooltip.transition()
+        .duration(300)
+        .style("opacity", 0)
+        .style("visiblity", 'hidden')
+      d3.select(this)
+        .style("opacity", 1.0)})
   });
 
 }

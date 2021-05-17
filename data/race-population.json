@@ -1,18 +1,18 @@
 {
   "killings":  [
-    {"race": "White", "count": 3972},
-    {"race": "Black", "count": 2288},
-    {"race": "Hispanic", "count": 1594},
-    {"race": "Asian", "count": 135},
-    {"race": "Native American", "count": 128},
-    {"race": "Pacific Island", "count": 51}
+    {"race": "White", "count": 3972, "percentage": "48.6"},
+    {"race": "Black", "count": 2288, "percentage": "28.0"},
+    {"race": "Hispanic", "count": 1594, "percentage": "19.5"},
+    {"race": "Asian", "count": 135, "percentage": "1.7"},
+    {"race": "Native American", "count": 128, "percentage": "1.6"},
+    {"race": "Pacific Island", "count": 51, "percentage": "0.62"}
   ],
   "population": [
-    {"race": "White", "count": 197271953},
-    {"race": "Black", "count":  40045222},
-    {"race": "Hispanic", "count": 60724312},
-    {"race": "Asian", "count": 18381413},
-    {"race": "Native American", "count": 2297677},
-    {"race": "Pacific Island", "count": 65647905}
+    {"race": "White", "count": 197271953, "percentage": "60.1"},
+    {"race": "Black", "count":  40045222, "percentage": "12.2"},
+    {"race": "Hispanic", "count": 60724312, "percentage": "18.5"},
+    {"race": "Asian", "count": 18381413, "percentage": "5.6"},
+    {"race": "Native American", "count": 2297677, "percentage": "0.7"},
+    {"race": "Pacific Island", "count": 656400, "percentage": "0.2"}
   ]
 }

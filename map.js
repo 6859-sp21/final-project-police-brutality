@@ -10,12 +10,16 @@ var map = new mapboxgl.Map({
     bearing: 0.00
 });
 
+// add Washington Post dataset
 map.on('load', function() {
   map.addSource('fatal-police-shootings', {
     'type': 'geojson',
-    // 'data': './data/fatal-police-shootings.geojson'
     'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'  
-  
+  })
+
+  map.addSource('total-departments', {
+    'type': 'geojson',
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/totalDepartments.geojson'  
   })
 
   map.addLayer({
@@ -32,8 +36,58 @@ map.on('load', function() {
       },
       'circle-color': '#e55e5e',
       
-    }})
-  // https://docs.mapbox.com/mapbox-gl-js/example/data-driven-circle-colors/
+    }
+  })
+
+  map.addLayer({
+    'id': 'participating',
+    'source': 'total-departments',
+    'type': 'fill',
+    'paint': {
+      'fill-opacity': 0,
+      'fill-opacity-transition': {duration: 2000},
+      'fill-color': [
+        'interpolate',
+        ['linear'],
+        ["/", ['get', 'numberParticipating'], ['get', 'Number of agencies']],
+        0,
+        '#fff5f0',
+        1,
+        '#67000d'
+      ],
+    }
+  })
+
+  map.addLayer({
+    'id': 'race',
+    'source': 'fatal-police-shootings',
+    'type': 'circle',
+    'paint': {
+      'circle-opacity': 0,
+      'circle-opacity-transition': {duration: 2000},
+      'circle-color': [
+        'match',
+        ['get', 'race'],
+        'W',
+        '#a6cee3',
+        'B',
+        '#fb9a99',
+        'H',
+        '#b2df8a',
+        'A',
+        '#fdbf6f',
+        'N',
+        '#cab2d6',
+        /* other */ '#ccc'
+          ],
+        'circle-radius': {
+            'base': 5,
+            'stops': [
+              [12, 2],
+              [22, 180]
+            ]},
+    }
+  })
 });
 
 var chapters = {
@@ -64,6 +118,13 @@ var chapters = {
       pitch: 0.00,
       bearing: 0.00
    },
+    'sickle-cell': {
+      duration: 3000,
+      center: { lon: -80.07853, lat: 34.97325 },
+      zoom: 15.37,
+      pitch: 0.00,
+      bearing: 0.00
+      },
       'accountability': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
@@ -106,31 +167,72 @@ var activeMarker = new mapboxgl.Marker()
   .addTo(map);
 
 var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
- 
+
 function triggerMapChange(chapterName) {
   if (chapterName === "data-incompleteness") {
-    map.addSource('state-data', {
-      'type': 'geojson',
-      'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/stateData.geojson'  
+    map.setLayoutProperty(
+      'fatal-deaths',
+      'visibility',
+      'none'
+    );
+    map.setLayoutProperty(
+      'participating',
+      'visibility',
+      'visible'
+    );
+    setTimeout(function() {
+      map.setPaintProperty(
+        'participating',
+        'fill-opacity',
+        1 
+      )
     })
-    dataIncompleteness = map.addLayer({
-      'id': 'density',
-      'source': 'state-data',
-      'type': 'fill',
-      'paint': {
-        'fill-color': [
-          'interpolate',
-          ['linear'],
-          ['get', 'density'],
-          0,
-          '#F2F12D',
-          50,
-          '#EED322'
-        ],
-      }})
+
+
+  } else if (chapterName === "marginalized-communities") {
+    setTimeout(function() {
+      map.setPaintProperty(
+        'race',
+        'circle-opacity',
+        1 
+      )
+    })
   } else {
-    map.removeSource('state-data')
-    map.removeLayer('density')
+    
+    setTimeout(function() {
+      map.setPaintProperty(
+        'participating',
+        'fill-opacity',
+        0
+      )
+      map.setLayoutProperty(
+        'participating',
+        'visibility',
+        'none'
+      );
+      map.setLayoutProperty(
+        'fatal-deaths',
+        'visibility',
+        'visible'
+      );
+    })
+    // map.setLayoutProperty(
+    //   'participating',
+    //   'visibility',
+    //   'none'
+    // );
+    // map.setLayoutProperty(
+    //   'fatal-deaths',
+    //   'visibility',
+    //   'visible'
+    // );
+    setTimeout(function() {
+      map.setPaintProperty(
+        'race',
+        'circle-opacity',
+        0
+      )
+    })
   }
 }
 function setActiveChapter(chapterName) {
