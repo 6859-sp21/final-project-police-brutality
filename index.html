@@ -59,18 +59,17 @@
               <div class="row">
                 <div class="column">
                   <div id="d3-racism" >
-                    <form>
-                      <label><input type="radio" name="dataset" value="killings" checked> race </label>
-                      <label><input type="radio" name="dataset" value="population"> overall population</label>
-                    </form>
                   </div>
                 </div>
                 <div class="column" style="padding-left: 30px; min-width: 50%">
                   <p>While White Americans accounted for the majority of police brutality deaths, we can't just focus on one version of this statistic.
                     We need to also consider the relative population within the United States.
                   </p>
-                  <button onClick=update()>Show me police deaths</button>
-                  <input name="dataset" type="button" value="population"/>
+                  <form>
+                    <label><input type="button" name="dataset" value="Show breakdown of deaths by police brutality"> </label>
+                    <!-- <br> -->
+                    <!-- <label><input type="radio" name="dataset" value="killings"> Breakdown of deaths by police brutality </label> -->
+                  </form>
                   <p>It might make a little more sense that White Americans constitute more of the data, because there are significantly more
                     White Americans in the United States. However, Black and brown communities are disproportionately more affected by police brutality, collectively
                     making up x% of police brutality deaths while only comprising y% of the total population.
