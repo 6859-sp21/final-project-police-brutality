@@ -63,8 +63,9 @@ section:last-child {
 }
 
 p{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px
+  font-family: 'EB Garamond', sans-serif;
+  font-size: 18px;
+  font-weight: 100
 }
 
 h1, h2, h3 {

@@ -117,6 +117,13 @@ var chapters = {
         pitch: 0.00,
         bearing: 0.00
     },
+    'why': {
+      duration: 3000,
+      center: {lon: -100.63789, lat: 39.96627},
+      zoom: 4.09,
+      pitch: 0.00,
+      bearing: 0.00
+  },
     'marginalized-communities': {
       duration: 3000,
       center: {lon: -100.63789, lat: 39.96627},
@@ -131,7 +138,7 @@ var chapters = {
       pitch: 0.00,
       bearing: 0.00
       },
-      'accountability': {
+    'accountability': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
         zoom: 4.09,
@@ -145,6 +152,12 @@ var chapters = {
         pitch: 0.00,
         bearing: 0.00
     }, 
+    'world-issue': {
+      center: {lon: -100.63789, lat: 39.96627},
+        zoom: 4.09,
+        pitch: 0.00,
+        bearing: 0.00
+    },
     'resources': {
       duration: 3000, 
       center: {lon: -100.63789, lat: 39.96627},

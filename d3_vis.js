@@ -18,6 +18,8 @@ function d3_racism() {
     innerRadius = 50,
     radius = Math.min(width, height) / 2,
     labelHeight = 10;
+  var legendRectSize = 18;
+  var legendSpacing = 4;
 
   var svg = d3.select("#d3-racism")
     .append("svg")
@@ -27,6 +29,31 @@ function d3_racism() {
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
   
   var color = d3.scaleOrdinal(["#a6cee3","#fb9a99","#b2df8a", "#fdbf6f","#cab2d6","#ffff99"])
+
+  var legend = svg.selectAll('.legend')
+    .data(color.domain())
+    .enter()
+    .append('g')
+    .attr('class', 'legend')
+    .attr('transform', function(d, i) {                     // NEW
+      var height = legendRectSize + legendSpacing;          // NEW
+      var offset =  height * color.domain().length / 2;     // NEW
+      var horz = -2 * legendRectSize;                       // NEW
+      var vert = i * height - offset;                       // NEW
+      return 'translate(' + horz + ',' + vert + ')';        // NEW
+    });                                                     // NEW
+
+  legend.append('rect')                                     // NEW
+    .attr('width', legendRectSize)                          // NEW
+    .attr('height', legendRectSize)                         // NEW
+    .style('fill', color)                                   // NEW
+    .style('stroke', color);                                // NEW
+    
+  legend.append('text')                                     // NEW
+    .attr('x', legendRectSize + legendSpacing)              // NEW
+    .attr('y', legendRectSize - legendSpacing)              // NEW
+    .text(function(d) { console.log('hello!', d); return d; });                       // NEW
+
 
   var pie = d3.pie()
     .value(d => d.count)
@@ -46,8 +73,23 @@ function d3_racism() {
     const i = d3.interpolate(this._current, a);
     this._current = i(1);
     return (t) => arc(i(t));
-  
   }
+
+  // legend = g => g.append("g")
+  //   .selectAll("g")
+  //   .data(raceData['killings'])
+  //   .join("g")
+  //     .attr("transform", (d, i) => `translate(-40,${(i - (raceData['killings'].length - 1) / 2) * 20})`)
+  //     .call(g => g.append("rect")
+  //         .attr("width", 18)
+  //         .attr("height", 18)
+  //         .attr("fill", color))
+  //     .call(g => g.append("text")
+  //         .attr("x", 24)
+  //         .attr("y", 9)
+  //         .attr("dy", "0.35em")
+  //         .text(d => d))
+
   d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json", type).then(data => {  
     var count = 0; 
     d3.selectAll("input")
