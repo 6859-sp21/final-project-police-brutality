@@ -1,7 +1,7 @@
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 20, left: 50},
-    width = 1200 - margin.left - margin.right,
+    width = 800 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -40,8 +40,7 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
   }
   statesArray.sort(function(a, b) { return b.Total - a.Total; });
   let subgroups = Object.keys(statesData["CA"]).filter((key)=> key!=="Total");
-  console.log(statesArray);
-  let smallerStatesArray = statesArray.slice(1,53);
+  let smallerStatesArray = statesArray.slice(0,30);
   let groups = smallerStatesArray.map((entry) => entry.state);
 
 
@@ -83,7 +82,6 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
   var mouseover = function(d) {
     // what subgroup are we hovering?
     var subgroupName = d3.select(this.parentNode).datum().key; // This was the tricky part
-    console.log(subgroupName);
     // Reduce opacity of all rect to 0.2
     d3.selectAll(".myRect").style("opacity", 0.2)
     // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
