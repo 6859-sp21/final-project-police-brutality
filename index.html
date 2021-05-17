@@ -8,12 +8,17 @@
         <link rel="stylesheet" href="styles.css">
         <script src="https://d3js.org/d3.v6.js"></script>
         <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-    </head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;800&family=Open+Sans&display=swap" rel="stylesheet">
+      </head>
     <body>
         <div id="map"></div>
         <div id="features">
-            <section id="adam-toledo" class="active" class="row">
-                <h3>Adam Toledo</h3>
+            <section id="title" class="active">
+              <h1>Police Brutality in the United States</h1>
+            </section>
+            <section id="adam-toledo" class="row">
+                <h2>Adam Toledo</h2>
                 <div class="row">
                   <div class="column">
                     <p>On March 29, 2021, Adam Toledo, a 13-year-old Latino boy,
@@ -38,7 +43,7 @@
                 </p>
             </section>
             <section id="span-us">
-                <h3>Police Deaths Across the United States</h3>
+                <h2>Police Deaths Across the United States</h2>
                 <p>Each dot on the map underneath represents a fatal police shooting, from
                   the Washington Post's <a href="https://github.com/washingtonpost/data-police-shootings">Fatal Force</a>
                   dataset, containing records of every fatal shooting in the United States by a police officer in the line of duty
@@ -55,7 +60,7 @@
 
             </section>
             <section id="marginalized-communities">
-              <h3>Police brutality disproportionately affects marginalized communities</h3>
+            <h2>Police brutality disproportionately affects marginalized communities</h2>
               <div class="row">
                 <div class="column">
                   <div id="d3-racism" >
@@ -78,15 +83,17 @@
               </div>
             </section>
             <section id="sickle-cell">
-              Like one in 13 Black Americans, Lamont Perry was born with sickle cell trait, and he died while fleeing the police through
+              <p>Like one in 13 Black Americans, Lamont Perry was born with sickle cell trait, and he died while fleeing the police through
               the woods of Wadesboro, North Carolina. The state medical examiner attributed his death to sickle cell trait, concluding that
-              he had died bby accident.
+              he had died bby accident.</p>
               <br>
+              <p>
               On May 15, 2021, the NYTimes <a href="https://www.nytimes.com/2021/05/15/us/african-americans-sickle-cell-police.html?campaign_id=9&emc=edit_nn_20210516&instance_id=30943&nl=the-morning&regi_id=81947204&segment_id=58211&te=1&user_id=95d7a0886d09bc2efc9c0403062e96ed">revealed a detailed examination</a> of autopsy records, court filings, and police reports – bringing 
               to light how many Black people in custody whose deaths were labeled as undetermined, accidental, or natural. Sickle cell trait, 
               the possession of one of the two genes necessary for sickle cell disease, affects millions 
               of people throughout the world but is more common among Black people. The condition is almost always benign on its own, 
               but American pathologists have used the condition to rule the in-custody deaths of Black people as accidents or natural occurrences.
+              </p>
 
             </section>
             <section id="accountability">

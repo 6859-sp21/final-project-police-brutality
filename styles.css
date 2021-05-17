@@ -36,6 +36,9 @@ section {
 
 section.active {
     opacity: 1;
+    transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+
 }
 
 section:last-child {
@@ -57,4 +60,26 @@ section:last-child {
 
 .column {
   flex: 50%;
+}
+
+p{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px
+}
+
+h1, h2, h3 {
+  font-family: 'EB Garamond', serif;
+}
+
+h1 {
+  font-size: 50px
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 1.2
+}
+
+h3 {
+  font-size: 24px
 }
