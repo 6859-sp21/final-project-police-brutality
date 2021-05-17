@@ -49,7 +49,7 @@ function d3_racism() {
     .attr('height', legendRectSize)                         // NEW
     .style('fill', color)                                   // NEW
     .style('stroke', color);                                // NEW
-    
+
   legend.append('text')                                     // NEW
     .attr('x', legendRectSize + legendSpacing)              // NEW
     .attr('y', legendRectSize - legendSpacing)              // NEW
@@ -74,12 +74,6 @@ function d3_racism() {
     const i = d3.interpolate(this._current, a);
     this._current = i(1);
     return (t) => arc(i(t));
-<<<<<<< HEAD
-
-  }
-  d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json", type).then(data => {
-    var count = 0;
-=======
   }
 
   // legend = g => g.append("g")
@@ -97,9 +91,8 @@ function d3_racism() {
   //         .attr("dy", "0.35em")
   //         .text(d => d))
 
-  d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json", type).then(data => {  
-    var count = 0; 
->>>>>>> 55d2e40e57af99915a5979d48f3b182bc29f11a1
+  d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json", type).then(data => {
+    var count = 0;
     d3.selectAll("input")
       .on("click", update);
 
