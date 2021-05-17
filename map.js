@@ -14,12 +14,12 @@ var map = new mapboxgl.Map({
 map.on('load', function() {
   map.addSource('fatal-police-shootings', {
     'type': 'geojson',
-    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'  
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'
   })
 
   map.addSource('total-departments', {
     'type': 'geojson',
-    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/totalDepartments.geojson'  
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/totalDepartments.geojson'
   })
 
   map.addLayer({
@@ -35,7 +35,7 @@ map.on('load', function() {
         ]
       },
       'circle-color': '#e55e5e',
-      
+
     }
   })
 
@@ -131,6 +131,13 @@ var chapters = {
       pitch: 0.00,
       bearing: 0.00
       },
+      'militarization': {
+        duration: 3000,
+        center: {lon: -100.63789, lat: 39.96627},
+        zoom: 4.09,
+        pitch: 0.00,
+        bearing: 0.00
+        },
       'accountability': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
@@ -144,9 +151,9 @@ var chapters = {
         zoom: 4.09,
         pitch: 0.00,
         bearing: 0.00
-    }, 
+    },
     'resources': {
-      duration: 3000, 
+      duration: 3000,
       center: {lon: -100.63789, lat: 39.96627},
       zoom: 4.09,
       pitch: 0.00,
@@ -190,7 +197,7 @@ function triggerMapChange(chapterName) {
       map.setPaintProperty(
         'participating',
         'fill-opacity',
-        1 
+        1
       )
     })
 
@@ -204,7 +211,7 @@ function triggerMapChange(chapterName) {
       )
     })
   } else {
-    
+
     setTimeout(function() {
       map.setPaintProperty(
         'participating',
@@ -252,7 +259,7 @@ function setActiveChapter(chapterName) {
       .setLngLat(chapters[chapterName].center)
       .addTo(map);
     }
-    
+
     document.getElementById(chapterName).setAttribute('class', 'active');
     document.getElementById(activeChapterName).setAttribute('class', '');
 
