@@ -80,17 +80,23 @@ map.on('load', function() {
         '#cab2d6',
         /* other */ '#ccc'
           ],
-        'circle-radius': {
-            'base': 5,
-            'stops': [
-              [12, 2],
-              [22, 180]
-            ]},
+        // 'circle-radius': {
+        //     'base': 10,
+        //     'stops': [
+        //       [12, 2],
+        //       [22, 180]
+        //     ]},
     }
   })
 });
 
 var chapters = {
+    'title': {
+        center: {lon: -100.63789, lat: 39.96627},
+        zoom: 4.09,
+        pitch: 0.00,
+        bearing: 0.00
+    },
     'adam-toledo': {
         center: {lon: -87.71506, lat: 41.83819},
         zoom: 12.58,
@@ -161,7 +167,7 @@ window.onscroll = function () {
     }
 };
 
-var activeChapterName = 'adam-toledo';
+var activeChapterName = 'title';
 var activeMarker = new mapboxgl.Marker()
   .setLngLat(chapters[activeChapterName].center)
   .addTo(map);
@@ -194,7 +200,7 @@ function triggerMapChange(chapterName) {
       map.setPaintProperty(
         'race',
         'circle-opacity',
-        1 
+        0.8
       )
     })
   } else {
