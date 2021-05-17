@@ -30,7 +30,8 @@ function d3_racism() {
     .append('g')
     .attr('transform', `translate(${radius * 2 + 20}, 0)`)
 
-  var color = d3.scaleOrdinal(["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"]);
+  // var color = d3.scaleOrdinal(["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"]);
+  var color = d3.scaleOrdinal(["#a6cee3","#fb9a99","#b2df8a", "#fdbf6f","#cab2d6","#ffff99"])
 
   var pie = d3.pie()
     .value(d => d.count)
