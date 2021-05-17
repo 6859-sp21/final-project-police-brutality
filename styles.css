@@ -31,6 +31,7 @@ section {
     opacity: 0.25;
     font-size: 13px;
     background-color: #fafafa;
+    min-width: 50%
     /* display: flex; */
 }
 
@@ -54,12 +55,20 @@ section:last-child {
 }
 
 .row {
-  display: flex;
-  padding: 30px;
+  display: table;
+  /* padding: 30px; */
 }
 
 .column {
-  flex: 50%;
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
 }
 
 p{
@@ -73,7 +82,9 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 50px
+  font-size: 50px;
+  line-height: 1.2
+
 }
 
 h2 {
