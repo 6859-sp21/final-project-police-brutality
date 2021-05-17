@@ -31,7 +31,7 @@ section {
     opacity: 0.25;
     font-size: 13px;
     background-color: #fafafa;
-    min-width: 50%
+    min-width: 600px
     /* display: flex; */
 }
 
@@ -39,7 +39,6 @@ section.active {
     opacity: 1;
     transition: opacity 0.5s;
     -webkit-transition: opacity 0.5s;
-
 }
 
 section:last-child {
@@ -94,4 +93,18 @@ h2 {
 
 h3 {
   font-size: 24px
+}
+
+input[type=button] {
+  border: 1px;
+  padding: 10px;
+  text-decoration: none;
+  /* margin: 4px 2px; */
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'EB Garamond';
+  max-width: 200px;
+  white-space: normal;
+word-wrap: break-word;
+
 }
