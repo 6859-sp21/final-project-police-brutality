@@ -23,6 +23,25 @@ map.on('load', function() {
   })
 
   map.addLayer({
+    'id': 'participating',
+    'source': 'total-departments',
+    'type': 'fill',
+    'paint': {
+      'fill-opacity': 0,
+      'fill-opacity-transition': {duration: 2000},
+      'fill-color': [
+        'interpolate',
+        ['linear'],
+        ["/", ['get', 'numberParticipating'], ['get', 'numberOfAgencies']],
+        0,
+        '#fff5f0',
+        1,
+        '#67000d'
+      ],
+    }
+  })
+
+  map.addLayer({
     'id': 'fatal-deaths',
     'source': 'fatal-police-shootings',
     'type': 'circle',
@@ -36,25 +55,6 @@ map.on('load', function() {
       },
       'circle-color': '#e55e5e',
 
-    }
-  })
-
-  map.addLayer({
-    'id': 'participating',
-    'source': 'total-departments',
-    'type': 'fill',
-    'paint': {
-      'fill-opacity': 0,
-      'fill-opacity-transition': {duration: 2000},
-      'fill-color': [
-        'interpolate',
-        ['linear'],
-        ["/", ['get', 'numberParticipating'], ['get', 'Number of agencies']],
-        0,
-        '#fff5f0',
-        1,
-        '#67000d'
-      ],
     }
   })
 
@@ -88,6 +88,21 @@ map.on('load', function() {
         //     ]},
     }
   })
+
+  var popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false
+  });
+     
+  map.on('mousemove', 'participating', function (e) {
+    map.getCanvas().style.cursor = 'pointer';
+    popup.setLngLat(e.lngLat).setHTML(e.features[0].properties.numberParticipating / e.features[0].properties.numberOfAgencies).addTo(map);
+  });
+     
+  map.on('mouseleave', 'participating', function () {
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+  });
 });
 
 var chapters = {
@@ -159,12 +174,12 @@ var chapters = {
         pitch: 0.00,
         bearing: 0.00
     },
-    'world-issue': {
-      center: {lon: -100.63789, lat: 39.96627},
-        zoom: 4.09,
-        pitch: 0.00,
-        bearing: 0.00
-    },
+    // 'world-issue': {
+    //   center: {lon: -100.63789, lat: 39.96627},
+    //     zoom: 4.09,
+    //     pitch: 0.00,
+    //     bearing: 0.00
+    // },
     'resources': {
       duration: 3000,
       center: {lon: -100.63789, lat: 39.96627},
@@ -197,11 +212,6 @@ var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
 function triggerMapChange(chapterName) {
   if (chapterName === "data-incompleteness") {
     map.setLayoutProperty(
-      'fatal-deaths',
-      'visibility',
-      'none'
-    );
-    map.setLayoutProperty(
       'participating',
       'visibility',
       'visible'
@@ -213,7 +223,6 @@ function triggerMapChange(chapterName) {
         1
       )
     })
-
 
   } else if (chapterName === "marginalized-communities") {
     setTimeout(function() {

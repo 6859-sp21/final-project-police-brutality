@@ -1,5 +1,3 @@
-
-
 function drawCalendar(myData) {
 
   var calendarRows = function(month) {
