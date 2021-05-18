@@ -23,7 +23,7 @@ function drawCalendar(myData) {
   var color = d3.scaleOrdinal()
     .domain([0, 10])
     .range(["#a6cee3","#fb9a99","#b2df8a", "#fdbf6f","#cab2d6","#ffff99"])
-    
+
   var svg = d3.select("#d3-calendar").selectAll("svg")
     .data(months)
     .enter().append("svg")
@@ -41,6 +41,10 @@ function drawCalendar(myData) {
     .attr("y", 15)
     .attr("text-anchor", "middle")
     .text(function(d) { return monthName(d); })
+
+  var scale = d3.scaleLinear()
+    .domain(d3.extent(myData, function(d) { return d.count; }))
+    .range([0.4,1]); // the interpolate used for color expects a number in the range [0,1] but i don't want the lightest part of the color scheme
 
   var rect = svg.selectAll("rect.day")
     .data(function(d, i) {
@@ -70,8 +74,8 @@ function drawCalendar(myData) {
       .datum(format);
 
   rect.append("title")
-    .text(function(d) { 
-      console.log(d)
+    .text(function(d) {
+      // console.log(d)
       return titleFormat(new Date(d)); });
 
   // var lookup = d3.nest()
@@ -79,7 +83,7 @@ function drawCalendar(myData) {
   //   .rollup(function(leaves) { return leaves.length; })
   //   .object(myData);
 
-  var lookup = d3.rollup(myData, v => v.length, d => d.date)
+  // var lookup = d3.rollup(myData, v => v.length, d => d.date)
   // console.log(lookup)
 
   // count = d3.nest()
@@ -87,27 +91,45 @@ function drawCalendar(myData) {
   //   .rollup(function(leaves) { return leaves.length; })
   //   .entries(myData);
 
-  var count = d3.rollup(myData, v => v.length, d => d.count)
+  // var count = d3.rollup(myData, v => v.length, d => d.count)
   // console.log('count')
   // console.log(count)
+  let countsByDate = d3.group(myData, d => (new Date(d.date)).toDateString());
 
-  scale = d3.scaleLinear()
-    .domain(d3.extent(count, function(d) { return d.count; }))
-    .range([0.4,1]); // the interpolate used for color expects a number in the range [0,1] but i don't want the lightest part of the color scheme
 
-  rect.filter(function(d) { return d in lookup; })
-    .style("fill", function(d) { return d3.interpolatePuBu(scale(lookup[d])); })
-    // .classed("clickable", true)
-    // .on("click", function(d){
-    //   if(d3.select(this).classed('focus')){
-    //     d3.select(this).classed('focus', false);
-    //   } else {
-    //     d3.select(this).classed('focus', true)
-    //   }
-    //   // doSomething();
-    // })
-    // .select("title")
-    //   .text(function(d) { return titleFormat(new Date(d)) + ":  " + lookup[d]; });
+  // var scale = d3.scaleLinear()
+  //   .domain(d3.extent(count, function(d) { return d.count; }))
+  //   .range([0.4,1]); // the interpolate used for color expects a number in the range [0,1] but i don't want the lightest part of the color scheme
+
+  rect.filter(function(d) { return d; })
+    .style("fill", function(d) {
+      let dayBefore = new Date(d);
+      let result = new Date(dayBefore);
+      result.setDate(result.getDate() + 1);
+      let dayResult = countsByDate.get(result.toDateString());
+      let count = 0;
+      if (typeof dayResult != "undefined"){
+        count = dayResult[0].count;
+        if (count === 0){
+          console.log( dayResult );
+          console.log((new Date(d)).toDateString())
+        }
+      }
+      if (count === 0){
+        return "eaeaea";
+      }
+      return d3.interpolatePuBu(scale(count)); })
+    .classed("clickable", true)
+    .on("click", function(d){
+      if(d3.select(this).classed('focus')){
+        d3.select(this).classed('focus', false);
+      } else {
+        d3.select(this).classed('focus', true)
+      }
+      // doSomething();
+    })
+    .select("title")
+      .text(function(d) { return titleFormat(new Date(d)) + ":  " + lookup[d]; });
 
 }
 
