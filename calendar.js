@@ -75,31 +75,11 @@ function drawCalendar(myData) {
 
   rect.append("title")
     .text(function(d) {
-      // console.log(d)
+
       return titleFormat(new Date(d)); });
 
-  // var lookup = d3.nest()
-  //   .key(function(d) { return d.today; })
-  //   .rollup(function(leaves) { return leaves.length; })
-  //   .object(myData);
-
-  // var lookup = d3.rollup(myData, v => v.length, d => d.date)
-  // console.log(lookup)
-
-  // count = d3.nest()
-  //   .key(function(d) { return d.today; })
-  //   .rollup(function(leaves) { return leaves.length; })
-  //   .entries(myData);
-
-  // var count = d3.rollup(myData, v => v.length, d => d.count)
-  // console.log('count')
-  // console.log(count)
   let countsByDate = d3.group(myData, d => (new Date(d.date)).toDateString());
 
-
-  // var scale = d3.scaleLinear()
-  //   .domain(d3.extent(count, function(d) { return d.count; }))
-  //   .range([0.4,1]); // the interpolate used for color expects a number in the range [0,1] but i don't want the lightest part of the color scheme
 
   rect.filter(function(d) { return d; })
     .style("fill", function(d) {
@@ -119,17 +99,21 @@ function drawCalendar(myData) {
         return "eaeaea";
       }
       return d3.interpolatePuBu(scale(count)); })
-    .classed("clickable", true)
-    .on("click", function(d){
-      if(d3.select(this).classed('focus')){
-        d3.select(this).classed('focus', false);
-      } else {
-        d3.select(this).classed('focus', true)
-      }
-      // doSomething();
-    })
     .select("title")
-      .text(function(d) { return titleFormat(new Date(d)) + ":  " + lookup[d]; });
+      .text(function(d) {
+        let dayBefore = new Date(d);
+        let result = new Date(dayBefore);
+        result.setDate(result.getDate() + 1);
+        let dayResult = countsByDate.get(result.toDateString());
+        let count = 0;
+        if (typeof dayResult != "undefined"){
+          count = dayResult[0].count;
+          if (count === 0){
+            console.log( dayResult );
+            console.log((new Date(d)).toDateString())
+          }
+        }
+        return titleFormat(new Date(d)) + ":  " + count; });
 
 }
 
