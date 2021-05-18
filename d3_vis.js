@@ -273,7 +273,7 @@ function d3_militarization() {
       }
 
       // Update axis and area position
-      xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(5))
+      xAxis.transition().duration(1000).call(d3.axisBottom(x).ticks(5).tickFormat(d3.format("d")))
       areaChart
         .selectAll("path")
         .transition().duration(1000)
