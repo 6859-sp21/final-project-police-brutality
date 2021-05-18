@@ -1,4 +1,3 @@
-
 function drawCalendar(myData) {
 
   var calendarRows = function(month) {
@@ -22,12 +21,7 @@ function drawCalendar(myData) {
   var color = d3.scaleOrdinal()
     .domain([0, 10])
     .range(["#a6cee3","#fb9a99","#b2df8a", "#fdbf6f","#cab2d6","#ffff99"])
-  
-  function coloring(d) {
-    let count = myData.find(x => x.date === d).count
-    // console.log(count)
-    return color(count)
-  }
+
   var svg = d3.select("#d3-calendar").selectAll("svg")
     .data(months)
     .enter().append("svg")
@@ -46,10 +40,12 @@ function drawCalendar(myData) {
     .attr("text-anchor", "middle")
     .text(function(d) { return monthName(d); })
 
+  var scale = d3.scaleLinear()
+    .domain(d3.extent(myData, function(d) { return d.count; }))
+    .range([0.4,1]); // the interpolate used for color expects a number in the range [0,1] but i don't want the lightest part of the color scheme
+
   var rect = svg.selectAll("rect.day")
     .data(function(d, i) {
-      console.log('d', d)
-      console.log('weird stuff', d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1)))
       return d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1));
     })
     .enter().append("rect")
@@ -57,7 +53,7 @@ function drawCalendar(myData) {
       .attr("width", cellSize)
       .attr("height", cellSize)
       .attr("rx", 3).attr("ry", 3) // rounded corners
-      .attr("fill", d => coloring(d)) // default light grey fill'#eaeaea'
+      .attr("fill", d => '#eaeaea') // default light grey fill
       .attr("x", function(d) {
         return (day(d) * cellSize) + (day(d) * cellMargin) + cellMargin;
       })
@@ -75,77 +71,47 @@ function drawCalendar(myData) {
       })
       .datum(format);
 
-  // rect.append("title")
-  //   .text(function(d) { 
-  //     // console.log('title', d)
-  //     return titleFormat(new Date(d)); });
+  rect.append("title")
+    .text(function(d) {
 
-  // var rect = svg.selectAll("rect.day")
-  //   .data(function(d, i) {
-  //     return d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1));
-  //   })
-  //   .enter().append("rect")
-  //     .attr("class", "day")
-  //     .attr("width", cellSize)
-  //     .attr("height", cellSize)
-  //     .attr("rx", 3).attr("ry", 3) // rounded corners
-  //     .attr("fill", d => '#eaeaea') // default light grey fill
-  //     .attr("x", function(d) {
-  //       return (day(d) * cellSize) + (day(d) * cellMargin) + cellMargin;
-  //     })
-  //     .attr("y", function(d) {
-  //       return ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellSize) +
-  //              ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellMargin) +
-  //              cellMargin + 20;
-  //      })
-  //     .attr("margin-top", "10px")
-  //     .on("mouseover", function(d) {
-  //       d3.select(this).classed('hover', true);
-  //     })
-  //     .on("mouseout", function(d) {
-  //       d3.select(this).classed('hover', false);
-  //     })
-  //     .datum(format);
+      return titleFormat(new Date(d)); });
 
-  // rect.append("title")
-  //   .text(function(d) { 
-  //     console.log(d)
-  //     return titleFormat(new Date(d)); });
+  let countsByDate = d3.group(myData, d => (new Date(d.date)).toDateString());
 
-  // var lookup = d3.nest()
-  //   .key(function(d) { return d.today; })
-  //   .rollup(function(leaves) { return leaves.length; })
-  //   .object(myData);
 
-  var lookup = d3.rollup(myData, v => v.length, d => d.date)
-  // console.log(lookup)
-
-  // count = d3.nest()
-  //   .key(function(d) { return d.today; })
-  //   .rollup(function(leaves) { return leaves.length; })
-  //   .entries(myData);
-
-  var count = d3.rollup(myData, v => v.length, d => d.count)
-  // console.log('count')
-  // console.log(count)
-
-  scale = d3.scaleLinear()
-    .domain(d3.extent(count, function(d) { return d.count; }))
-    .range([0.4,1]); // the interpolate used for color expects a number in the range [0,1] but i don't want the lightest part of the color scheme
-
-  rect.filter(function(d) { return d in lookup; })
-    .style("fill", function(d) { return d3.interpolatePuBu(scale(lookup[d])); })
-    // .classed("clickable", true)
-    // .on("click", function(d){
-    //   if(d3.select(this).classed('focus')){
-    //     d3.select(this).classed('focus', false);
-    //   } else {
-    //     d3.select(this).classed('focus', true)
-    //   }
-    //   // doSomething();
-    // })
-    // .select("title")
-    //   .text(function(d) { return titleFormat(new Date(d)) + ":  " + lookup[d]; });
+  rect.filter(function(d) { return d; })
+    .style("fill", function(d) {
+      let dayBefore = new Date(d);
+      let result = new Date(dayBefore);
+      result.setDate(result.getDate() + 1);
+      let dayResult = countsByDate.get(result.toDateString());
+      let count = 0;
+      if (typeof dayResult != "undefined"){
+        count = dayResult[0].count;
+        if (count === 0){
+          console.log( dayResult );
+          console.log((new Date(d)).toDateString())
+        }
+      }
+      if (count === 0){
+        return "eaeaea";
+      }
+      return d3.interpolatePuBu(scale(count)); })
+    .select("title")
+      .text(function(d) {
+        let dayBefore = new Date(d);
+        let result = new Date(dayBefore);
+        result.setDate(result.getDate() + 1);
+        let dayResult = countsByDate.get(result.toDateString());
+        let count = 0;
+        if (typeof dayResult != "undefined"){
+          count = dayResult[0].count;
+          if (count === 0){
+            console.log( dayResult );
+            console.log((new Date(d)).toDateString())
+          }
+        }
+        return titleFormat(new Date(d)) + ":  " + count; });
 
 }
 
@@ -168,7 +134,10 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
     allDates.push({date: d, count: 0})})
 
   let allDatesSorted = allDates.slice().sort((a, b) => b.date-a.date)
-  console.log(allDatesSorted)
+
   drawCalendar(allDatesSorted)
+
+
+
 
 });
