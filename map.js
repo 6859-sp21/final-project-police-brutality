@@ -159,12 +159,12 @@ var chapters = {
         pitch: 0.00,
         bearing: 0.00
     },
-    'world-issue': {
-      center: {lon: -100.63789, lat: 39.96627},
-        zoom: 4.09,
-        pitch: 0.00,
-        bearing: 0.00
-    },
+    // 'world-issue': {
+    //   center: {lon: -100.63789, lat: 39.96627},
+    //     zoom: 4.09,
+    //     pitch: 0.00,
+    //     bearing: 0.00
+    // },
     'resources': {
       duration: 3000,
       center: {lon: -100.63789, lat: 39.96627},

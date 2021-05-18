@@ -1,5 +1,4 @@
 
-
 function drawCalendar(myData) {
 
   var calendarRows = function(month) {
@@ -23,7 +22,12 @@ function drawCalendar(myData) {
   var color = d3.scaleOrdinal()
     .domain([0, 10])
     .range(["#a6cee3","#fb9a99","#b2df8a", "#fdbf6f","#cab2d6","#ffff99"])
-    
+  
+  function coloring(d) {
+    let count = myData.find(x => x.date === d).count
+    // console.log(count)
+    return color(count)
+  }
   var svg = d3.select("#d3-calendar").selectAll("svg")
     .data(months)
     .enter().append("svg")
@@ -44,6 +48,8 @@ function drawCalendar(myData) {
 
   var rect = svg.selectAll("rect.day")
     .data(function(d, i) {
+      console.log('d', d)
+      console.log('weird stuff', d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1)))
       return d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1));
     })
     .enter().append("rect")
@@ -51,7 +57,7 @@ function drawCalendar(myData) {
       .attr("width", cellSize)
       .attr("height", cellSize)
       .attr("rx", 3).attr("ry", 3) // rounded corners
-      .attr("fill", d => '#eaeaea') // default light grey fill
+      .attr("fill", d => coloring(d)) // default light grey fill'#eaeaea'
       .attr("x", function(d) {
         return (day(d) * cellSize) + (day(d) * cellMargin) + cellMargin;
       })
@@ -69,10 +75,42 @@ function drawCalendar(myData) {
       })
       .datum(format);
 
-  rect.append("title")
-    .text(function(d) { 
-      console.log(d)
-      return titleFormat(new Date(d)); });
+  // rect.append("title")
+  //   .text(function(d) { 
+  //     // console.log('title', d)
+  //     return titleFormat(new Date(d)); });
+
+  // var rect = svg.selectAll("rect.day")
+  //   .data(function(d, i) {
+  //     return d3.timeDays(d, new Date(d.getFullYear(), d.getMonth()+1, 1));
+  //   })
+  //   .enter().append("rect")
+  //     .attr("class", "day")
+  //     .attr("width", cellSize)
+  //     .attr("height", cellSize)
+  //     .attr("rx", 3).attr("ry", 3) // rounded corners
+  //     .attr("fill", d => '#eaeaea') // default light grey fill
+  //     .attr("x", function(d) {
+  //       return (day(d) * cellSize) + (day(d) * cellMargin) + cellMargin;
+  //     })
+  //     .attr("y", function(d) {
+  //       return ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellSize) +
+  //              ((week(d) - week(new Date(d.getFullYear(),d.getMonth(),1))) * cellMargin) +
+  //              cellMargin + 20;
+  //      })
+  //     .attr("margin-top", "10px")
+  //     .on("mouseover", function(d) {
+  //       d3.select(this).classed('hover', true);
+  //     })
+  //     .on("mouseout", function(d) {
+  //       d3.select(this).classed('hover', false);
+  //     })
+  //     .datum(format);
+
+  // rect.append("title")
+  //   .text(function(d) { 
+  //     console.log(d)
+  //     return titleFormat(new Date(d)); });
 
   // var lookup = d3.nest()
   //   .key(function(d) { return d.today; })
@@ -130,10 +168,7 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
     allDates.push({date: d, count: 0})})
 
   let allDatesSorted = allDates.slice().sort((a, b) => b.date-a.date)
-
+  console.log(allDatesSorted)
   drawCalendar(allDatesSorted)
-
-
-
 
 });
