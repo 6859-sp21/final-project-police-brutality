@@ -10,17 +10,16 @@ var map = new mapboxgl.Map({
     bearing: 0.00
 });
 
+// add Washington Post dataset
 map.on('load', function() {
   map.addSource('fatal-police-shootings', {
     'type': 'geojson',
-    // 'data': './data/fatal-police-shootings.geojson'
-    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'  
-  
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/fatal-police-shootings.geojson'
   })
 
   map.addSource('total-departments', {
     'type': 'geojson',
-    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/totalDepartments.geojson'  
+    'data': 'https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/totalDepartments.geojson'
   })
 
   map.addLayer({
@@ -36,7 +35,7 @@ map.on('load', function() {
         ]
       },
       'circle-color': '#e55e5e',
-      
+
     }
   })
 
@@ -45,6 +44,8 @@ map.on('load', function() {
     'source': 'total-departments',
     'type': 'fill',
     'paint': {
+      'fill-opacity': 0,
+      'fill-opacity-transition': {duration: 2000},
       'fill-color': [
         'interpolate',
         ['linear'],
@@ -64,19 +65,27 @@ map.on('load', function() {
     'paint': {
       'circle-opacity': 0,
       'circle-opacity-transition': {duration: 2000},
-    'circle-color': [
-      'match',
-      ['get', 'race'],
-      'W',
-      '#fbb03b',
-      'B',
-      '#223b53',
-      'H',
-      '#e55e5e',
-      'A',
-      '#3bb2d0',
-      /* other */ '#ccc'
-        ]
+      'circle-color': [
+        'match',
+        ['get', 'race'],
+        'W',
+        '#a6cee3',
+        'B',
+        '#fb9a99',
+        'H',
+        '#b2df8a',
+        'A',
+        '#fdbf6f',
+        'N',
+        '#cab2d6',
+        /* other */ '#ccc'
+          ],
+        // 'circle-radius': {
+        //     'base': 10,
+        //     'stops': [
+        //       [12, 2],
+        //       [22, 180]
+        //     ]},
     }
   })
 
@@ -97,6 +106,12 @@ map.on('load', function() {
 });
 
 var chapters = {
+    'title': {
+        center: {lon: -100.63789, lat: 39.96627},
+        zoom: 4.09,
+        pitch: 0.00,
+        bearing: 0.00
+    },
     'adam-toledo': {
         center: {lon: -87.71506, lat: 41.83819},
         zoom: 12.58,
@@ -117,6 +132,13 @@ var chapters = {
         pitch: 0.00,
         bearing: 0.00
     },
+    'why': {
+      duration: 3000,
+      center: {lon: -100.63789, lat: 39.96627},
+      zoom: 4.09,
+      pitch: 0.00,
+      bearing: 0.00
+  },
     'marginalized-communities': {
       duration: 3000,
       center: {lon: -100.63789, lat: 39.96627},
@@ -124,6 +146,20 @@ var chapters = {
       pitch: 0.00,
       bearing: 0.00
    },
+    'sickle-cell': {
+      duration: 3000,
+      center: { lon: -80.07853, lat: 34.97325 },
+      zoom: 15.37,
+      pitch: 0.00,
+      bearing: 0.00
+      },
+      'militarization': {
+        duration: 3000,
+        center: {lon: -100.63789, lat: 39.96627},
+        zoom: 4.09,
+        pitch: 0.00,
+        bearing: 0.00
+        },
       'accountability': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
@@ -137,9 +173,15 @@ var chapters = {
         zoom: 4.09,
         pitch: 0.00,
         bearing: 0.00
-    }, 
+    },
+    // 'world-issue': {
+    //   center: {lon: -100.63789, lat: 39.96627},
+    //     zoom: 4.09,
+    //     pitch: 0.00,
+    //     bearing: 0.00
+    // },
     'resources': {
-      duration: 3000, 
+      duration: 3000,
       center: {lon: -100.63789, lat: 39.96627},
       zoom: 4.09,
       pitch: 0.00,
@@ -160,7 +202,7 @@ window.onscroll = function () {
     }
 };
 
-var activeChapterName = 'adam-toledo';
+var activeChapterName = 'title';
 var activeMarker = new mapboxgl.Marker()
   .setLngLat(chapters[activeChapterName].center)
   .addTo(map);
@@ -179,25 +221,52 @@ function triggerMapChange(chapterName) {
       'visibility',
       'visible'
     );
+    setTimeout(function() {
+      map.setPaintProperty(
+        'participating',
+        'fill-opacity',
+        1
+      )
+    })
+
+
   } else if (chapterName === "marginalized-communities") {
     setTimeout(function() {
       map.setPaintProperty(
         'race',
         'circle-opacity',
-        1 
+        0.8
       )
     })
   } else {
-    map.setLayoutProperty(
-      'participating',
-      'visibility',
-      'none'
-    );
-    map.setLayoutProperty(
-      'fatal-deaths',
-      'visibility',
-      'visible'
-    );
+
+    setTimeout(function() {
+      map.setPaintProperty(
+        'participating',
+        'fill-opacity',
+        0
+      )
+      map.setLayoutProperty(
+        'participating',
+        'visibility',
+        'none'
+      );
+      map.setLayoutProperty(
+        'fatal-deaths',
+        'visibility',
+        'visible'
+      );
+    })
+    // map.setLayoutProperty(
+    //   'participating',
+    //   'visibility',
+    //   'none'
+    // );
+    // map.setLayoutProperty(
+    //   'fatal-deaths',
+    //   'visibility',
+    //   'visible'
+    // );
     setTimeout(function() {
       map.setPaintProperty(
         'race',
@@ -218,7 +287,7 @@ function setActiveChapter(chapterName) {
       .setLngLat(chapters[chapterName].center)
       .addTo(map);
     }
-    
+
     document.getElementById(chapterName).setAttribute('class', 'active');
     document.getElementById(activeChapterName).setAttribute('class', '');
 

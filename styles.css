@@ -31,11 +31,14 @@ section {
     opacity: 0.25;
     font-size: 13px;
     background-color: #fafafa;
+    min-width: 600px
     /* display: flex; */
 }
 
 section.active {
     opacity: 1;
+    transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
 }
 
 section:last-child {
@@ -51,8 +54,8 @@ section:last-child {
 }
 
 .row {
-  display: flex;
-  padding: 30px;
+  display: table;
+  /* padding: 30px; */
 }
 
 .column {
@@ -62,4 +65,52 @@ section:last-child {
 .mapboxgl-popup {
   max-width: 400px;
   font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+p{
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 100
+}
+
+h1, h2, h3 {
+  font-family: 'EB Garamond', serif;
+}
+
+h1 {
+  font-size: 50px;
+  line-height: 1.2
+
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 1.2
+}
+
+h3 {
+  font-size: 24px
+}
+
+input[type=button] {
+  border: 1px;
+  padding: 10px;
+  text-decoration: none;
+  /* margin: 4px 2px; */
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: 'Lato';
+  max-width: 200px;
+  white-space: normal;
+word-wrap: break-word;
+
 }
