@@ -48,7 +48,7 @@ map.on('load', function() {
       'fill-color': [
         'interpolate',
         ['linear'],
-        ["/", ['get', 'numberParticipating'], ['get', 'Number of agencies']],
+        ["/", ['get', 'numberParticipating'], ['get', 'numberOfAgencies']],
         0,
         '#fff5f0',
         1,
@@ -79,6 +79,21 @@ map.on('load', function() {
         ]
     }
   })
+
+  var popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false
+  });
+     
+  map.on('mousemove', 'participating', function (e) {
+    map.getCanvas().style.cursor = 'pointer';
+    popup.setLngLat(e.lngLat).setHTML(e.features[0].properties.numberParticipating / e.features[0].properties.numberOfAgencies).addTo(map);
+  });
+     
+  map.on('mouseleave', 'participating', function () {
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+  });
 });
 
 var chapters = {
