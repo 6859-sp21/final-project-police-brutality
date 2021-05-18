@@ -23,23 +23,6 @@ map.on('load', function() {
   })
 
   map.addLayer({
-    'id': 'fatal-deaths',
-    'source': 'fatal-police-shootings',
-    'type': 'circle',
-    'paint': {
-      'circle-radius': {
-        'base': 5,
-        'stops': [
-          [12, 2],
-          [22, 180]
-        ]
-      },
-      'circle-color': '#e55e5e',
-
-    }
-  })
-
-  map.addLayer({
     'id': 'participating',
     'source': 'total-departments',
     'type': 'fill',
@@ -55,6 +38,23 @@ map.on('load', function() {
         1,
         '#67000d'
       ],
+    }
+  })
+
+  map.addLayer({
+    'id': 'fatal-deaths',
+    'source': 'fatal-police-shootings',
+    'type': 'circle',
+    'paint': {
+      'circle-radius': {
+        'base': 5,
+        'stops': [
+          [12, 2],
+          [22, 180]
+        ]
+      },
+      'circle-color': '#e55e5e',
+
     }
   })
 
@@ -212,11 +212,6 @@ var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
 function triggerMapChange(chapterName) {
   if (chapterName === "data-incompleteness") {
     map.setLayoutProperty(
-      'fatal-deaths',
-      'visibility',
-      'none'
-    );
-    map.setLayoutProperty(
       'participating',
       'visibility',
       'visible'
@@ -228,7 +223,6 @@ function triggerMapChange(chapterName) {
         1
       )
     })
-
 
   } else if (chapterName === "marginalized-communities") {
     setTimeout(function() {
