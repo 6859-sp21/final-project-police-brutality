@@ -118,13 +118,13 @@ var chapters = {
         pitch: 0.00,
         bearing: 0.00
     },
-    'daunte-wright': {
-        duration: 3000,
-        center: {lon: -93.31144, lat: 45.06281},
-        zoom: 13.00,
-        pitch: 0.00,
-        bearing: 0.00
-    },
+    // 'daunte-wright': {
+    //     duration: 3000,
+    //     center: {lon: -93.31144, lat: 45.06281},
+    //     zoom: 13.00,
+    //     pitch: 0.00,
+    //     bearing: 0.00
+    // },
     'span-us': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
@@ -152,8 +152,14 @@ var chapters = {
       zoom: 15.37,
       pitch: 0.00,
       bearing: 0.00
-      },
-      'militarization': {
+    },
+    'adam-toledo2': {
+      center: {lon: -87.71506, lat: 41.83819},
+        zoom: 12.58,
+        pitch: 0.00,
+        bearing: 0.00
+    },
+    'militarization': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
         zoom: 4.09,
