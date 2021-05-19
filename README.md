@@ -2,9 +2,11 @@ Project Page: List title, team members, summary image, abstract, link to the pap
 
 Readme File: In the repository’s readme.md, include a breakdown of how the work was split among the group members and a commentary on the project process.
 
-## Project 
+## Project
 ### Title: Police Brutality in the United States
 #### Team Members: Allan Garcia-Zych, Jodi Huang, Tanya Yang
+
+![alt text](https://github.com/6859-sp21/final-project-police-brutality/blob/main/img/summary.png)
 
 Abstract: 
 
