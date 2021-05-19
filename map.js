@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidGFueWFuZyIsImEiOiJjanl0ZjJzaHUwM2dwM2xtaDJtN
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v9',
-    center: {lon: -108.63789, lat: 40.96627},
-    zoom: 3.90,
+    center: {lon: -87.71506 - 0.04, lat: 41.83819},
+    zoom: 12.58,
     pitch: 0.00,
     bearing: 0.00
 });
@@ -106,13 +106,12 @@ map.on('load', function() {
 
 var chapters = {
     'title': {
-      center: {lon: -108.63789, lat: 40.96627},
-      zoom: 3.90,
+      center: {lon: -87.71506 - 0.04, lat: 41.83819},
+      zoom: 12.58,
       pitch: 0.00,
       bearing: 0.00
     },
     'adam-toledo': {
-      duration: 3000,
       center: {lon: -87.71506 - 0.04, lat: 41.83819},
       zoom: 12.58,
       pitch: 0.00,
