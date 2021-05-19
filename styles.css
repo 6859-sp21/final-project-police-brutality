@@ -147,3 +147,7 @@ ul {
 .month {
   margin: 5px;
 }
+
+#d3-population, #d3-racism {
+  margin: 20px;
+}
