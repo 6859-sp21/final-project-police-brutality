@@ -40,7 +40,7 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
   }
   statesArray.sort(function(a, b) { return b.Total - a.Total; });
   let subgroups = Object.keys(statesData["CA"]).filter((key)=> key!=="Total");
-  let smallerStatesArray = statesArray.slice(0,30);
+  let smallerStatesArray = statesArray.slice(0,20);
   let groups = smallerStatesArray.map((entry) => entry.state);
 
 
