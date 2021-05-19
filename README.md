@@ -8,11 +8,12 @@ Readme File: In the repository’s readme.md, include a breakdown of how the wor
 
 ![alt text](https://github.com/6859-sp21/final-project-police-brutality/blob/main/img/summary.png)
 
-Abstract: 
+Abstract:
+
 
 Link to paper:
 
-Link to video:
+The video can be found [here](https://www.loom.com/share/9ea3c7949bd44d97bdadd98e91ec6724)
 
 Running instructions: Simply download this Github repo and open up index.html.
 
@@ -23,6 +24,4 @@ The project initially started as an exploration into voter turnout, but the auth
 
 From these cases, the authors quickly realized that police brutality was a much more multidimensional issue than they had once perceived.
 ### Breakdown of Work
-  All three authors contributed to the outlining of the narrative. Allan worked on the visualizations for legislation, militrization, and the calendar view, as well as some of their corresponding writing sections. Jodi worked on an accountabiltiy section (which we unfortunately could not fit at the end) as well as the missing data choropleth. She also contributed heavily to the formatting of the scrollytelling. Tanya worked on the marginalized community pie charts as well as the sepcific case studies accompanying many of the visualiations, with connections to the very current cases of Breonna Taylor and Adam Toledo. She also worke don the overall styling of the piece, with color and font selections.
-
-
+All three authors contributed to the outlining of the narrative. Allan worked on the visualizations for legislation, militarization, and the calendar view, as well as some of their corresponding writing sections. Jodi worked on an accountabiltiy section (which we unfortunately could not fit at the end) as well as the missing data choropleth. She also contributed heavily to the formatting of the scrollytelling. Tanya worked on the marginalized community pie charts as well as the specific case studies accompanying many of the visualiations, with connections to the very current cases of Breonna Taylor and Adam Toledo. She also worked on the overall styling of the piece, with color and font selections.
