@@ -44,6 +44,7 @@ map.on('load', function() {
     'source': 'fatal-police-shootings',
     'type': 'circle',
     'paint': {
+      'circle-opacity-transition': {duration: 2000},
       'circle-radius': {
         'base': 5,
         'stops': [
@@ -105,16 +106,17 @@ map.on('load', function() {
 
 var chapters = {
     'title': {
-        center: {lon: -110.63789, lat: 39.96627},
-        zoom: 3.80,
-        pitch: 0.00,
-        bearing: 0.00
+      center: {lon: -108.63789, lat: 40.96627},
+      zoom: 3.90,
+      pitch: 0.00,
+      bearing: 0.00
     },
     'adam-toledo': {
-        center: {lon: -87.71506, lat: 41.83819},
-        zoom: 12.58,
-        pitch: 0.00,
-        bearing: 0.00
+      duration: 3000,
+      center: {lon: -87.71506 - 0.04, lat: 41.83819},
+      zoom: 12.58,
+      pitch: 0.00,
+      bearing: 0.00
     },
     // 'daunte-wright': {
     //     duration: 3000,
@@ -124,65 +126,64 @@ var chapters = {
     //     bearing: 0.00
     // },
     'span-us': {
-        duration: 3000,
-        center: {lon: -100.63789, lat: 39.96627},
-        zoom: 4.09,
-        pitch: 0.00,
-        bearing: 0.00
+      duration: 3000,
+      center: {lon: -108.63789, lat: 40.96627},
+      zoom: 3.90,
+      pitch: 0.00,
+      bearing: 0.00
     },
     'why': {
-      duration: 3000,
-      center: {lon: -100.63789, lat: 39.96627},
-      zoom: 4.09,
+      center: {lon: -108.63789, lat: 40.96627},
+      zoom: 3.90,
       pitch: 0.00,
       bearing: 0.00
   },
     'marginalized-communities': {
-      duration: 3000,
-      center: {lon: -100.63789, lat: 39.96627},
-      zoom: 4.09,
+      center: {lon: -108.63789, lat: 40.96627},
+      zoom: 3.90,
       pitch: 0.00,
       bearing: 0.00
    },
     'sickle-cell': {
       duration: 3000,
-      center: { lon: -80.07853, lat: 34.97325 },
-      zoom: 15.37,
+      center: { lon: -80.07853 - 0.04, lat: 34.97325 },
+      zoom: 12.58,
       pitch: 0.00,
       bearing: 0.00
     },
     'adam-toledo2': {
-      center: {lon: -87.71506, lat: 41.83819},
-        zoom: 12.58,
-        pitch: 0.00,
-        bearing: 0.00
-    },
-    'militarization': {
-        duration: 3000,
-        center: {lon: -100.63789, lat: 39.96627},
-        zoom: 4.09,
-        pitch: 0.00,
-        bearing: 0.00
-    },
-    'breonna-taylor': {
-      center: { lon: -85.70036, lat: 38.25642 },
-      zoom: 10.55,
+      duration: 3000,
+      center: {lon: -87.71506 - 0.04, lat: 41.83819},
+      zoom: 12.58,
       pitch: 0.00,
       bearing: 0.00
     },
-      'accountability': {
-        duration: 3000,
-        center: {lon: -100.63789, lat: 39.96627},
-        zoom: 4.09,
-        pitch: 0.00,
-        bearing: 0.00
+    'militarization': {
+      duration: 3000,
+      center: {lon: -108.63789, lat: 40.96627},
+      zoom: 3.90,
+      pitch: 0.00,
+      bearing: 0.00
+    },
+    'breonna-taylor': {
+      duration: 3000,
+      center: { lon: -85.70036 - 0.04, lat: 38.25642 },
+      zoom: 12.58,
+      pitch: 0.00,
+      bearing: 0.00
+    },
+    'accountability': {
+      duration: 3000,
+      center: {lon: -108.63789, lat: 40.96627},
+      zoom: 3.90,
+      pitch: 0.00,
+      bearing: 0.00
     },
     'data-incompleteness': {
-        duration: 3000,
-        center: {lon: -100.63789, lat: 39.96627},
-        zoom: 4.09,
-        pitch: 0.00,
-        bearing: 0.00
+      center: {lon: -108.63789, lat: 40.96627},
+      zoom: 3.90,
+      pitch: 0.00,
+      bearing: 0.00
     },
     // 'world-issue': {
     //   center: {lon: -100.63789, lat: 39.96627},
@@ -191,9 +192,8 @@ var chapters = {
     //     bearing: 0.00
     // },
     'resources': {
-      duration: 3000,
-      center: {lon: -100.63789, lat: 39.96627},
-      zoom: 4.09,
+      center: {lon: -108.63789, lat: 40.96627},
+      zoom: 3.90,
       pitch: 0.00,
       bearing: 0.00
   }
@@ -215,7 +215,7 @@ window.onscroll = function () {
 var activeChapterName = 'title';
 var activeMarker = new mapboxgl.Marker()
 
-var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
+var knownNames = ['adam-toledo', 'sickle-cell', 'adam-toledo2', 'breonna-taylor']
 
 function triggerMapChange(chapterName) {
   if (chapterName === "data-incompleteness") {
@@ -224,11 +224,13 @@ function triggerMapChange(chapterName) {
       'visibility',
       'visible'
     );
-    map.setLayoutProperty(
-      'fatal-deaths',
-      'visibility',
-      'none'
-    );
+    setTimeout(function() {
+      map.setPaintProperty(
+        'fatal-deaths',
+        'circle-opacity',
+        0
+      )
+    })
     setTimeout(function() {
       map.setPaintProperty(
         'participating',
@@ -258,11 +260,13 @@ function triggerMapChange(chapterName) {
         'visibility',
         'none'
       );
-      map.setLayoutProperty(
+    })
+    setTimeout(function() {
+      map.setPaintProperty(
         'fatal-deaths',
-        'visibility',
-        'visible'
-      );
+        'circle-opacity',
+        1
+      )
     })
     // map.setLayoutProperty(
     //   'participating',
@@ -291,7 +295,7 @@ function setActiveChapter(chapterName) {
     activeMarker.remove()
     if (knownNames.includes(chapterName)) {
       activeMarker = new mapboxgl.Marker()
-      .setLngLat(chapters[chapterName].center)
+      .setLngLat({lon: chapters[chapterName].center["lon"] + 0.04, lat: chapters[chapterName].center["lat"]})
       .addTo(map);
     }
 
