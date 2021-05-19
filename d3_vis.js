@@ -293,8 +293,8 @@ function d3_militarization() {
     // color palette
     var color = d3.scaleOrdinal()
       .domain(keys)
-      .range(["#32964d", "#a31526", "#96a467", "#683c00", "#ff743c", "#255026", "#dd6e81"]);
-
+      // .range(["#32964d", "#a31526", "#96a467", "#683c00", "#ff743c", "#255026", "#dd6e81"]);
+      .range(["#4e79a7","#f28e2c","#e15759","#76b7b2","#59a14f","#edc949","#af7aa1","#ff9da7","#9c755f","#bab0ab"])
     //stack the data?
     var stackedData = d3.stack()
       .keys(keys)

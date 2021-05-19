@@ -63,20 +63,18 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
   // color palette = one color per subgroup
   var color = d3.scaleOrdinal()
     .domain(subgroups)
-    .range(["#32964d","#a31526", "#683c00", "#dd6e81", "#ff743c", "#255026",  "#96a467"]);
+    .range(["#33a02c","#a6cee3","#e15759","#76b7b2","#59a14f","#edc949","#af7aa1","#ff9da7","#9c755f","#bab0ab"])
 
-    // tooltips
-
-
-    var tooltip = d3.select("div#leg_container").append("div")
-      .attr("class", "tooltip")
-        .style("position", "absolute")
-        .style("z-index", "10")
-        .style("visibility", "hidden")
-        .style("background", "white")
-        .style("padding", "10px")
-        .style("border-radius", "5px")
-        .style("width", "200px")
+  // tooltip
+  var tooltip = d3.select("div#leg_container").append("div")
+    .attr("class", "tooltip")
+      .style("position", "absolute")
+      .style("z-index", "10")
+      .style("visibility", "hidden")
+      .style("background", "white")
+      .style("padding", "10px")
+      .style("border-radius", "5px")
+      .style("width", "200px")
 
   //stack the data? --> stack per subgroup
   var stackedData = d3.stack()

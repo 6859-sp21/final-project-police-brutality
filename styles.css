@@ -132,7 +132,8 @@ word-wrap: break-word;
   display: block; 
   margin-left: auto; 
   margin-right: auto; 
-  width: 75%
+  width: 75%;
+  text-align: center
 }
 
 ul {
