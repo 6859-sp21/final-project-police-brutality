@@ -114,3 +114,8 @@ input[type=button] {
 word-wrap: break-word;
 
 }
+
+#leg_container, #d3-militarization {
+  display: inline-block;
+  margin: 0 auto
+}

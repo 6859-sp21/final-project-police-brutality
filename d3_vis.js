@@ -29,7 +29,7 @@ function d3_racism() {
     .append("g")
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-  var color = d3.scaleOrdinal(["#a6cee3","#fb9a99","#b2df8a", "#fdbf6f","#cab2d6","#ffff99"])
+  var color = d3.scaleOrdinal(["#a31526","#32964d", "#683c00", "#ff743c", "#255026", "#dd6e81",  "#96a467"])
 
   var pie = d3.pie()
     .value(d => d.count)
@@ -144,7 +144,7 @@ function d3_test() {
 function d3_militarization() {
 
   // set the dimensions and margins of the graph
-  var margin = {top: 60, right: 230, bottom: 50, left: 100},
+  var margin = {top: 60, right: 230, bottom: 50, left: 150},
       width = 800 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
@@ -169,7 +169,7 @@ function d3_militarization() {
     // color palette
     var color = d3.scaleOrdinal()
       .domain(keys)
-      .range(d3.schemeSet2);
+      .range(["#32964d", "#a31526", "#96a467", "#683c00", "#ff743c", "#255026", "#dd6e81"]);
 
     //stack the data?
     var stackedData = d3.stack()
@@ -311,7 +311,7 @@ function d3_militarization() {
         .data(keys)
         .enter()
         .append("rect")
-          .attr("x", 500)
+          .attr("x", 450)
           .attr("y", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
           .attr("width", size)
           .attr("height", size)
@@ -324,7 +324,7 @@ function d3_militarization() {
         .data(keys)
         .enter()
         .append("text")
-          .attr("x", 500 + size*1.2)
+          .attr("x", 450 + size*1.2)
           .attr("y", function(d,i){ return 10 + i*(size+5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
           .style("fill", function(d){ return color(d)})
           .text(function(d){ return d})

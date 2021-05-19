@@ -63,9 +63,20 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
   // color palette = one color per subgroup
   var color = d3.scaleOrdinal()
     .domain(subgroups)
-    .range(d3.schemeSet2);
+    .range(["#32964d","#a31526", "#683c00", "#dd6e81", "#ff743c", "#255026",  "#96a467"]);
+
+    // tooltips
 
 
+    var tooltip = d3.select("div#leg_container").append("div")
+      .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .style("background", "white")
+        .style("padding", "10px")
+        .style("border-radius", "5px")
+        .style("width", "200px")
 
   //stack the data? --> stack per subgroup
   var stackedData = d3.stack()
@@ -80,6 +91,7 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
 
   // What happens when user hover a bar
   var mouseover = function(d) {
+    console.log("over")
     // what subgroup are we hovering?
     var subgroupName = d3.select(this.parentNode).datum().key; // This was the tricky part
     // Reduce opacity of all rect to 0.2
@@ -89,12 +101,29 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
       .style("opacity", 1)
     }
 
+    tooltip.transition()
+      .duration(200)
+      .style("opacity", 0.9)
+      .style("visibility", "visible")
+
   // When user do not hover anymore
   var mouseleave = function(d) {
+    console.log("leave")
     // Back to normal opacity: 0.8
     d3.selectAll(".myRect")
       .style("opacity",0.8)
-    }
+
+      tooltip.transition()
+        .duration(50)
+        .style("opacity", 0)
+        .style("visiblity", 'hidden')
+      }
+
+  var mousemove = function(d) {
+    var subgroupName = d3.select(this.parentNode).datum().key; // This was the tricky part
+    tooltip.html("<b>Status:</b> " + subgroupName )
+      .style("top",(event.pageY-10)+"px").style("left",(event.pageX+10)+"px").style("opacity", 0.9)
+  }
   // Show the bars
   svg.append("g")
     .selectAll("g")
@@ -111,9 +140,12 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
         .attr("y", function(d) { return y(d[1]); })
         .attr("height", function(d) { return y(d[0]) - y(d[1]); })
         .attr("width",x.bandwidth())
-        .attr("stroke", "grey")
+        // .attr("stroke", "grey")
       .on("mouseover", mouseover)
       .on("mouseleave", mouseleave)
+      .on("mousemove", mousemove)
+
+
 
 
 });

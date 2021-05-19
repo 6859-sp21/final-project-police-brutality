@@ -96,7 +96,7 @@ function drawCalendar(myData) {
       if (count === 0){
         return "eaeaea";
       }
-      return d3.interpolatePuBu(scale(count)); })
+      return d3.interpolateReds(scale(count)); })
     .select("title")
       .text(function(d) {
         let dayBefore = new Date(d);
