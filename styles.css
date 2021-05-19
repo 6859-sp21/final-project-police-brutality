@@ -82,7 +82,7 @@ p{
   font-weight: 100
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: 'EB Garamond', serif;
 }
 
@@ -118,4 +118,15 @@ word-wrap: break-word;
 #leg_container, #d3-militarization {
   display: inline-block;
   margin: 0 auto
+}
+
+.center{
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 75%
+}
+
+ul {
+  list-style-type: none
 }

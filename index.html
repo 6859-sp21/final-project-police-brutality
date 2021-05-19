@@ -59,9 +59,9 @@
             <section id="why">
               <h2>How has police brutality persisted as an issue?</h2>
               <p> Police brutality is a systemic issue with multiple facets, from racism to the militarization of our police to missing data for how serious the
-                problem actually is. If we look at police killings for the year 2021 thus far, we find that there have only
-                been six days where there have beenn zero police killings.</p>
-              <div id="d3-calendar"></div>
+                problem actually is. If we look at police killings for the year 2021 thus far (data collected up to April 21, 2021), we find that there have only
+                been three days where there have beenn zero police killings.</p>
+              <div id="d3-calendar" class="center"></div>
               <p>Through examining the various layers of police brutality, we hope to deepen understanding surrounding this complex issue. We'll start
                 with an examination into how police brutality intersects with race and trickles down further into covering up deaths. We'll then examine the militariziation
                 of the police as well as stagnated avenues to change, and close with highlighing the significance of missing data.
@@ -108,12 +108,10 @@
                 even vilified Adam and his family. While it's unclear if he was a member, the mere assumption of him being one flattens his death to a consequence from 
                 being with the wrong crowd, rather than a tragedy that reflects disinvestment from communities, housing and racial discrimination, and efforts to curb gun violence. 
               </p>
-              <img src="img/justice-for-adam.jpeg" style="display: block; margin-left: auto; margin-right: auto; width: 75%"/>
+              <img src="img/justice-for-adam.jpeg" class="center"/>
             </section>
             <section id="militarization">
-              <h3>The militarization of police</h3>
-
-
+              <h2>The Militarization of Police</h2>
               <p>In the early 1990s, Congress authorized the Department of Defense to transfer excess military equipment to
               law enforcement agencies across the United States. In 1997, this program was made permanent under section 1033 of the
               National Defense Authorization Act (NDAA), and henceforth referred to as the "1033 program" in reporting. The kinds of equipment
@@ -122,32 +120,46 @@
               way to avoid wasting taxpayer funds. However, even though controlled items loaned are far fewer in number, their values, and the ensuing savings
               afforded to LEAs, dominate the total value of equipment distributed.
             </p>
-            <h4>Cumulative Value of 1033 Program Equipment Over Time, Organized by DoD DEMIL Code</h4>
+            <h4 class="center">Cumulative Value of 1033 Program Equipment Over Time, Organized by DoD DEMIL Code</h4>
             <div id="d3-militarization"></div>
             <p>
               This stacked area plot makes use of data from the Massachusetts ACLU, which tracked all of the equipment provided to LEAs since the early 1990s. Tracked along with the
               dollar value of items, and the agencies to which they are provided, are DoD "DEMIL Codes", which guide policies for demilitarizing different types of
               military equipment when they leave DoD control. They can be used to roughly distinguish between the categories of equipment given to LEAs through the 1033 program.
-              Equipment with DEMIL Code "A" are mostly benign, uncontrolled materials, which "present a low risk when released out of DoD control." "B" and "Q" items require "mutilation
-              to the point of scrap" either worldwide, or when disposed of outside of the United States, and include items such as night vision goggles, some electronic equipment, and
-              certain vehicles. "D" includes most firearms, which require destruction beyond the point of repair and reuse. Finally, items labeled with DEMIL code "C" require the
-              removal and destruction only of certain key components. This category includes most vehicles, from helicopters, to trucks, to the Armored Personnel Carriers popular with SWAT
-              teams and riot police.
             </p>
+            <ul>
+              <li><p>A : Mostly benign, uncontrolled materials, which "present a low risk when released out of DoD control.</p></li>
+              <li><p>B and Q: Require "mutilation to the point of scrap" either worldwide, or when disposed of outside of the United States. Inlcludes items like night vision goggles, some electronic equiipment,
+                and certain vehicles.</p></li>
+              <li><p>D : Includes most firearms, which require destruction beyond the opint of repair and reuse.</p></li>
+              <li><p>C : Require removal and destruction only of certain key components. Includes most vehicles, from helicopters to trucks, to the Armored Personnel Carriers popular with SWAT teams and riot police.</p></li>
+            </ul>
             <p>
-              Notably, after the end of large scale deployments in Iraq around 2010, the value and number of items with DEMIL code "C" rose massively. Vehicles used to
-              fight the "War on Terror" are now being deployed in response to domestic protests and used to execute the kinds of no-knock warrants made infamous by the killing of Breonna Taylor.
+              Notably, after the end of large scale deployments in Iraq around 2010, the value and number of items with DEMIL code "C" rose massively. 
             </p>
             <p>
               It is important to note that not all of the armored vehicles used by police in the United States are acquired through this program. In fact, many of the largest
               police departments are sufficiently well funded to afford purchasing these items outright. However, this data demonstrates that amid growing outrage against
               police tactics and violence, many LEAs, across the country are only becoming better armed and equipped.
-
               </p>
+            </section>
+            <section id="breonna-taylor">
+              <h3>No Knock Warrants and Breonna Taylor's Death</h3>
+              <p>Louisville police officers used a battering ram to enter Breonna Taylor's apartment at around midnight on March 13, investigating whether the apartment was being used to receive packages for a drug selling operation. 
+                Breonna Taylor's boyfriend, Kenneth Walker, feared that her ex-boyfriend was trying to break in and fired a gun once after the police broke the door off its hinges. The police responded by firing back, and their 
+                shots struck Breonna five times. While she received no medical attention, the officers at the scene called an ambulance to the scene and aided their shot colleague.
+              </p>
+              <p>Vehicles and tactis used to fight the "War on Terror" are now being deployed in response to domestic protests and used to execute these kinds of no-knock warrants. Breonna Taylor was killed during a drug 
+                raid on her home – <a href="https://www.npr.org/2020/07/01/885942130/militarization-of-police-means-u-s-protesters-face-weapons-designed-for-war">she was not killed by a SWAT team, rather a police team using SWAT team 
+                tactics without the relevant training</a>.
+              </p>
+              <img src="img/breonna.jpeg" class="center">
+              <p>Breonna Taylor was a big sister, daughter, godmother, and a best friend who dreamed of caring for the tiniest, most helpless of humans. She planned to study to become a nurse. </p>
+              <p></p>
             </section>
             <section id="accountability">
               <h2>The Legislative Approach</h2>
-              <h4>Bills Introduced in 2020 and 2021, Organized by State and Status</h4>
+              <h4 class="center">Bills Introduced in 2020 and 2021, Organized by State and Status</h4>
               <div id="leg_container"></div>
               <p>blah blah blah</p>
             </section>
@@ -163,7 +175,7 @@
                 use of force registry would make studying policing much easier, and enable better accountability for law enforcement
                 agencies across the country.</p>
                 <br>
-                <h2>State by State Participation in the FBI Use of Force Database</h2>
+                <!-- <h2>State by State Participation in the FBI Use of Force Database</h2> -->
             </section>
             <!-- <section id="world-issue">
               <h2>How does the United States compare to other democracies?</h2>

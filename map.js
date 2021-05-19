@@ -165,7 +165,13 @@ var chapters = {
         zoom: 4.09,
         pitch: 0.00,
         bearing: 0.00
-        },
+    },
+    'breonna-taylor': {
+      center: { lon: -85.70036, lat: 38.25642 },
+      zoom: 10.55,
+      pitch: 0.00,
+      bearing: 0.00
+    },
       'accountability': {
         duration: 3000,
         center: {lon: -100.63789, lat: 39.96627},
