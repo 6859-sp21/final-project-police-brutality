@@ -228,6 +228,11 @@ function triggerMapChange(chapterName) {
       'visibility',
       'visible'
     );
+    map.setLayoutProperty(
+      'fatal-deaths',
+      'visibility',
+      'none'
+    );
     setTimeout(function() {
       map.setPaintProperty(
         'participating',
