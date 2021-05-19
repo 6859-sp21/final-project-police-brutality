@@ -127,16 +127,18 @@ function d3_population() {
       .attr("width", width)
       .attr("height", height)
     .append("g")
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
 
   var svgRace = d3.select("#d3-racism")
     .append("svg")
       .attr("width", width)
       .attr("height", height)
     .append("g")
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-  
-  var color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854","#ffd92f","#e5c494"]);
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");//   // var color = d3.scaleOrdinal(["#a31526","#32964d", "#683c00", "#ff743c", "#255026", "#dd6e81",  "#96a467"])
+  // var color = d3.scaleOrdinal(["#a31526","#32964d", "#683c00", "#ff743c", "#255026", "#dd6e81",  "#96a467"])
+  var color = d3.scaleOrdinal(["#a6cee3","#fb9a99","#b2df8a", "#fdbf6f","#cab2d6","#ffff99"])
+
+  // var color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854","#ffd92f","#e5c494"]);
   var pie = d3.pie()
     .value(d => d.count)
     .sort(null);
