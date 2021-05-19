@@ -211,14 +211,14 @@ function d3_population() {
     .attr('y', -5)
     .attr('font-size', '1em')
     .text(`Population`)
-    .attr('font-family', 'Garamond')
+    .attr('font-family', 'Crimson Text')
 
     svg.append("text")
     .attr("text-anchor", "middle")
     .attr('y', 15)
     .attr('font-size', '1em')
     .text(`Distribution`)
-    .attr('font-family', 'Garamond')
+    .attr('font-family', 'Crimson Text')
 
     var tooltipKillings = d3.select("#d3-racism").append("div")
       .attr("class", "tooltip")
@@ -255,14 +255,14 @@ function d3_population() {
       .attr('y', -5)
       .attr('font-size', '1em')
       .text(`Death from`)
-      .attr('font-family', 'Garamond')
+      .attr('font-family', 'Crimson Text')
 
     svgRace.append("text")
       .attr("text-anchor", "middle")
       .attr('y', 15)
       .attr('font-size', '1em')
       .text(`Police Brutality`)
-      .attr('font-family', 'Garamond')
+      .attr('font-family', 'Crimson Text')
 })};
 
 function d3_militarization() {
