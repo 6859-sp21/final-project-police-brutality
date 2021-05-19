@@ -47,7 +47,8 @@ section:last-child {
 }
 
 .column {
-  flex: 50%;
+  float: left;
+  width: 45%;
 }
 
 .mapboxgl-popup {
@@ -71,7 +72,7 @@ p{
 }
 
 h1, h2, h3, h4 {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Crimson Text', serif;
 }
 
 h1 {
@@ -147,4 +148,8 @@ ul {
 .half {
   width: 48%;
   padding: 1%;
+}
+
+.authors {
+  font-style: italic;
 }

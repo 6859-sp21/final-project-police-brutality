@@ -39,6 +39,7 @@ function drawCalendar(myData) {
     .attr("y", 15)
     .attr("text-anchor", "middle")
     .text(function(d) { return monthName(d); })
+    .attr('font-family', 'Crimson Text')
 
   var scale = d3.scaleLinear()
     .domain(d3.extent(myData, function(d) { return d.count; }))

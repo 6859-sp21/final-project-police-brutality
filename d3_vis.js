@@ -7,30 +7,138 @@ Promise.all([
   // files[1] will contain file2.csv
   fpsData = data[0];
   raceData = data[1];
-  d3_racism();
+  // d3_racism();
   d3_militarization();
+  d3_population();
 }).catch(function(err) {
   // handle error here
 })
 
-function d3_racism() {
+// function d3_racism() {
+//   var width = 300,
+//     height = 300,
+//     innerRadius = 50,
+//     radius = Math.min(width, height) / 2,
+//     labelHeight = 10;
+//   var legendRectSize = 18;
+//   var legendSpacing = 4;
+
+//   var svg = d3.select("#d3-racism")
+//     .append("svg")
+//       .attr("width", width)
+//       .attr("height", height)
+//     .append("g")
+//       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+//   // var color = d3.scaleOrdinal(["#a31526","#32964d", "#683c00", "#ff743c", "#255026", "#dd6e81",  "#96a467"])
+//   // var color = d3.scaleOrdinal(["#1b9e77","#d95f02","#7570b3","#e7298a","#66a61e","#e6ab02","#a6761d"])
+//   var color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854","#ffd92f","#e5c494"]);
+//   var pie = d3.pie()
+//     .value(d => d.count)
+//     .sort(null);
+
+//   var arc = d3.arc()
+//     .innerRadius(innerRadius)
+//     .outerRadius(radius)
+
+//   function type(d) {
+//     d.killings = Number(d.killings)
+//     d.population = Number(d.population)
+//     return d;
+//   }
+
+//   function arcTween(a) {
+//     const i = d3.interpolate(this._current, a);
+//     this._current = i(1);
+//     return (t) => arc(i(t));
+//   }
+
+//   d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json", type).then(data => {
+//     var count = 0;
+//     d3.selectAll("input")
+//       .on("click", update);
+
+//     function update() {
+//         var val = "population"
+//         count += 1;
+//         // will start @ killings
+//         if (count % 2 === 0){
+//           val = "killings"
+//         }
+//         console.log(data[val])
+//         const path = svg.selectAll("path")
+//             .data(pie(data[val]));
+
+//         // Update existing arcs
+//         path.transition().duration(200).attrTween("d", arcTween);
+
+//         // Enter new arcs
+//         path.enter().append("path")
+//             .attr("fill", (d, i) => color(i))
+//             .attr("d", arc)
+//             .attr("stroke", "white")
+//             .attr("stroke-width", "2px")
+//             .each(function(d) { this._current = d; });
+//     }
+//     update();
+
+//     // tooltips
+//   var tooltip = d3.select("#d3-racism").append("div")
+//   .attr("class", "tooltip")
+//     .style("position", "absolute")
+//     .style("z-index", "10")
+//     .style("visibility", "hidden")
+//     .style("background", "white")
+//     .style("padding", "10px")
+//     .style("border-radius", "5px")
+//     .style("width", "200px")
+
+//   svg.selectAll("path")
+//     .on("mouseover", function(event, d) {
+//       tooltip.transition()
+//         .duration(200)
+//         .style("opacity", 0.9)
+//         .style("visibility", "visible")})
+//     .on("mousemove", function(event, d) {
+//       d3.select(this)
+//         .style("opacity", 0.5)
+//       tooltip.html(d.data.race + ": " + d.data.percentage + "%")
+//         .style("top",(event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
+//     })
+//     .on("mouseout", function(){
+//       tooltip.transition()
+//         .duration(300)
+//         .style("opacity", 0)
+//         .style("visiblity", 'hidden')
+//       d3.select(this)
+//         .style("opacity", 1.0)})
+//   });
+
+// }
+
+function d3_population() {
   var width = 300,
     height = 300,
     innerRadius = 50,
-    radius = Math.min(width, height) / 2,
-    labelHeight = 10;
-  var legendRectSize = 18;
-  var legendSpacing = 4;
+    radius = Math.min(width, height) / 2
 
-  var svg = d3.select("#d3-racism")
+  var svg = d3.select("#d3-population")
     .append("svg")
       .attr("width", width)
       .attr("height", height)
     .append("g")
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
 
-  var color = d3.scaleOrdinal(["#a31526","#32964d", "#683c00", "#ff743c", "#255026", "#dd6e81",  "#96a467"])
+  var svgRace = d3.select("#d3-racism")
+    .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+    .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");//   // var color = d3.scaleOrdinal(["#a31526","#32964d", "#683c00", "#ff743c", "#255026", "#dd6e81",  "#96a467"])
+  // var color = d3.scaleOrdinal(["#a31526","#32964d", "#683c00", "#ff743c", "#255026", "#dd6e81",  "#96a467"])
+  var color = d3.scaleOrdinal(["#a6cee3","#fb9a99","#b2df8a", "#fdbf6f","#cab2d6","#ffff99"])
 
+  // var color = d3.scaleOrdinal(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854","#ffd92f","#e5c494"]);
   var pie = d3.pie()
     .value(d => d.count)
     .sort(null);
@@ -45,43 +153,30 @@ function d3_racism() {
     return d;
   }
 
-  function arcTween(a) {
-    const i = d3.interpolate(this._current, a);
-    this._current = i(1);
-    return (t) => arc(i(t));
-  }
 
   d3.json("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutality/main/data/race-population.json", type).then(data => {
-    var count = 0;
-    d3.selectAll("input")
-      .on("click", update);
+    const path = svg.selectAll("path")
+      .data(pie(data["population"]))
+    
+    path.enter()
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', function(d) {return (color(d.data.race))})
+      .attr("stroke", "white")
+      .attr("stroke-width", "1px")
 
-    function update() {
-        var val = "population"
-        count += 1;
-        // will start @ killings
-        if (count % 2 === 0){
-          val = "killings"
-        }
-        console.log(data[val])
-        const path = svg.selectAll("path")
-            .data(pie(data[val]));
-
-        // Update existing arcs
-        path.transition().duration(200).attrTween("d", arcTween);
-
-        // Enter new arcs
-        path.enter().append("path")
-            .attr("fill", (d, i) => color(i))
-            .attr("d", arc)
-            .attr("stroke", "white")
-            .attr("stroke-width", "2px")
-            .each(function(d) { this._current = d; });
-    }
-    update();
-
-    // tooltips
-  var tooltip = d3.select("#d3-racism").append("div")
+    const pathRace = svgRace.selectAll("path")
+      .data(pie(data["killings"]))
+    
+    pathRace.enter()
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', function(d) {return (color(d.data.race))})
+      .attr("stroke", "white")
+      .attr("stroke-width", "1px")
+    
+   // tooltips
+  var tooltip = d3.select("#d3-population").append("div")
   .attr("class", "tooltip")
     .style("position", "absolute")
     .style("z-index", "10")
@@ -110,36 +205,65 @@ function d3_racism() {
         .style("visiblity", 'hidden')
       d3.select(this)
         .style("opacity", 1.0)})
-  });
 
-}
+    svg.append("text")
+    .attr("text-anchor", "middle")
+    .attr('y', -5)
+    .attr('font-size', '1em')
+    .text(`Population`)
+    .attr('font-family', 'Crimson Text')
 
-function d3_test() {
-    testData = fpsData.slice(6200).filter(d => d.age !== "" && d.name !== "");
+    svg.append("text")
+    .attr("text-anchor", "middle")
+    .attr('y', 15)
+    .attr('font-size', '1em')
+    .text(`Distribution`)
+    .attr('font-family', 'Crimson Text')
 
-    var barHeight = 25,
-        width = 1000,
-        height = testData.length * barHeight;
+    var tooltipKillings = d3.select("#d3-racism").append("div")
+      .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .style("background", "white")
+        .style("padding", "10px")
+        .style("border-radius", "5px")
+        .style("width", "200px")
+      
+    svgRace.selectAll("path")
+      .on("mouseover", function(event, d) {
+        tooltip.transition()
+          .duration(200)
+          .style("opacity", 0.9)
+          .style("visibility", "visible")})
+      .on("mousemove", function(event, d) {
+        d3.select(this)
+          .style("opacity", 0.5)
+        tooltip.html(d.data.race + ": " + d.data.percentage + "%")
+          .style("top",(event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
+      })
+      .on("mouseout", function(){
+        tooltip.transition()
+          .duration(300)
+          .style("opacity", 0)
+          .style("visiblity", 'hidden')
+        d3.select(this)
+          .style("opacity", 1.0)})
 
-    const container = d3.select("svg#d3_test")
-        .attr("width", width)
-        .attr("height", height);
-    container.selectAll("rect")
-        .data(testData)
-        .join("rect")
-            .attr("x", 0)
-            .attr("y", (d, i) => i * barHeight)
-            .attr("width", d => parseInt(d.age))
-            .attr("height", barHeight)
-    container.selectAll("text")
-        .data(testData)
-        .join("text")
-            .attr("x", d => parseInt(d.age))
-            .attr("y", (d, i) => i * barHeight)
-            .attr("dx", "15")
-            .attr("dy", "1.3em")
-            .text(d => d.name + ", " + d.age)
-};
+    svgRace.append("text")
+      .attr("text-anchor", "middle")
+      .attr('y', -5)
+      .attr('font-size', '1em')
+      .text(`Death from`)
+      .attr('font-family', 'Crimson Text')
+
+    svgRace.append("text")
+      .attr("text-anchor", "middle")
+      .attr('y', 15)
+      .attr('font-size', '1em')
+      .text(`Police Brutality`)
+      .attr('font-family', 'Crimson Text')
+})};
 
 function d3_militarization() {
 
@@ -169,8 +293,8 @@ function d3_militarization() {
     // color palette
     var color = d3.scaleOrdinal()
       .domain(keys)
-      .range(["#32964d", "#a31526", "#96a467", "#683c00", "#ff743c", "#255026", "#dd6e81"]);
-
+      // .range(["#32964d", "#a31526", "#96a467", "#683c00", "#ff743c", "#255026", "#dd6e81"]);
+      .range(["#4e79a7","#f28e2c","#e15759","#76b7b2","#59a14f","#edc949","#af7aa1","#ff9da7","#9c755f","#bab0ab"])
     //stack the data?
     var stackedData = d3.stack()
       .keys(keys)

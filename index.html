@@ -11,6 +11,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;800&family=Open+Sans&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Raleway&display=swap" rel="stylesheet">
       </head>
     <body>
         <div id="map"></div>
@@ -18,7 +20,8 @@
             <section id="title" class="active">
               <div class="column-center">
                 <h1>Police Brutality in the United States</h1>
-                <p>By Allan Garcia-Zych, Jodi Huang, and Tanya Yang</p>
+                <p>Why has police brutality persisted in the United States? What makes it such a difficult problem, and where does data fit into all this?</p>
+                <p class="authors">An interactive data exploration by Allan Garcia-Zych, Jodi Huang, and Tanya Yang</p>
               </div>
             </section>
             
@@ -35,16 +38,6 @@
               </div>
             </section>
 
-            <!-- <section id="daunte-wright">
-              <h2>Daunte Wright</h2>
-              <p>
-                On April 11, 2021, Daunte Wright, a 20-year-old African-American man,
-                was fatally shot by police officer Kimberly Potter during a traffic
-                stop and attempted arrest for an outstanding arrest warrant in Brooklyn
-                Center, Minnesota. After a brief struggle with officers, Wright was shot at close range.
-              </p>
-            </section> -->
-
             <section id="span-us">
               <div class="column-left">
                 <h2>Deaths By Police Brutality, Across the United States</h2>
@@ -52,7 +45,7 @@
                   Each dot on the map underneath represents a fatal police shooting, from
                   the Washington Post's <a href="https://github.com/washingtonpost/data-police-shootings">Fatal Force</a>
                   dataset, containing records of every fatal shooting in the United States by a police officer in the line of duty
-                  since January 1st, 2015. Adam Toledo is one of them. 
+                  since January 1st, 2015. Adam Toledo is one of them.
                   <br><br>
                   It barely begins to capture the full picture of police brutality in the United States – for example, George Floyd, whose murder sparked
                   nationwide and global protests for the #BlackLivesMatter movement and against police brutality, isn't in this dataset because there was
@@ -86,7 +79,10 @@
               <div class="column-left">
                 <h2>Police brutality disproportionately affects marginalized communities</h2>
                 <div class="row-center">
-                  <div id="d3-racism" class="half"></div>
+                  <div class="column-center half">
+                    <div id="d3-population"></div>
+                    <div id="d3-racism"></div>
+                  </div>
                   <div class="column-left half">
                     <p>
                       Estimations for the the percentage of race and Hispanic origin <a href="https://www.census.gov/quickfacts/fact/table/US/PST045219">(as of July 1, 2019)</a> are depicted in this pie chart to your left. If we dive
@@ -132,6 +128,7 @@
                   </p>
                   <img src="img/justice-for-adam.jpeg" class="half"/>
                 </div>
+                <p>According to this mom, Adam was a happy boy who liked to ride bikes with his siblings and play with Hot Wheels cars.</p>
               </div>
             </section>
 
@@ -197,9 +194,15 @@
             <section id="accountability">
               <div class="column-left">
                 <h2>The Legislative Approach</h2>
-                <h4>Bills Introduced in 2020 and 2021, Organized by State and Status</h4>
+                <h3>Bills Introduced in 2020 and 2021, Organized by State and Status</h3>
                 <div id="leg_container"></div>
-                <p>blah blah blah</p>
+                <p>
+                  This stacked bar chart shows the number of bills introduced in each U.S. state's legislature, as well as their status as of earlier this month. The data was obtained from the
+                  National Conference of State Legislatures, which utilizes LexisNexis to catalog bills. To fit on the page, only the 20 states with the largest number of bills are included. Every state
+                  legislature functions slightly differently, and operate under their own political climates, leading to natural variations in the number of bills and their passage rates. Minnesota, rocked
+                  by the killing of George Floyd in 2020, saw a large number of introduced bills, along with a high failure rate, indicating a resistance to reform
+                  among the political establishment, even amidst widepread public outrage.
+                </p>
               </div>
             </section>
 
