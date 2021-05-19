@@ -2,10 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidGFueWFuZyIsImEiOiJjanl0ZjJzaHUwM2dwM2xtaDJtN
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v9',
-    // style: 'mapbox://styles/mapbox/streets-v11',
-    // style: https://www.mapbox.com/maps/dark
-    center: {lon: -87.71506, lat: 41.83819},
-    zoom: 12.58,
+    center: {lon: -108.63789, lat: 40.96627},
+    zoom: 3.90,
     pitch: 0.00,
     bearing: 0.00
 });
@@ -107,8 +105,8 @@ map.on('load', function() {
 
 var chapters = {
     'title': {
-        center: {lon: -100.63789, lat: 39.96627},
-        zoom: 4.09,
+        center: {lon: -110.63789, lat: 39.96627},
+        zoom: 3.80,
         pitch: 0.00,
         bearing: 0.00
     },
@@ -216,8 +214,6 @@ window.onscroll = function () {
 
 var activeChapterName = 'title';
 var activeMarker = new mapboxgl.Marker()
-  .setLngLat(chapters[activeChapterName].center)
-  .addTo(map);
 
 var knownNames = ['adam-toledo', 'daunte-wright', 'makhia-bryant']
 

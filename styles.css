@@ -1,54 +1,44 @@
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-}
-
-#map {
-    position: fixed;
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
 }
 
 #features {
-    width: 60%;
-    font-family: sans-serif;
-    overflow-y: scroll;
-    margin: auto;
-    margin-top: 100px
+  width: 50%;
+  overflow-y: scroll;
+  margin: auto;
+  margin-top: 100px;
+  margin-left: 50px;
 }
 
 section {
-    padding: 25px 50px;
-    line-height: 25px;
-    margin-bottom: 400px;
-    border-bottom: 1px solid #ddd;
-    opacity: 0.25;
-    font-size: 13px;
-    background-color: #fafafa;
-    min-width: 600px
-    /* display: flex; */
+  padding: 20px 40px;
+  line-height: 25px;
+  margin-bottom: 400px;
+  border-bottom: 1px solid #ddd;
+  opacity: 0.25;
+  font-size: 13px;
+  background-color: #fafafa;
+  min-width: 600px
 }
 
 section.active {
-    opacity: 1;
-    transition: opacity 0.5s;
-    -webkit-transition: opacity 0.5s;
+  opacity: 1;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
 }
 
 section:last-child {
-    border-bottom: none;
-    margin-bottom: 200px;
-}
-
-.column {
-  float: left;
-  width: 45%;
+  border-bottom: none;
+  margin-bottom: 200px;
 }
 
 .mapboxgl-popup {
@@ -65,7 +55,7 @@ section:last-child {
   }
 }
 
-p{
+p {
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   font-weight: 100
@@ -76,9 +66,8 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 45px;
   line-height: 1.2
-
 }
 
 h2 {
@@ -94,14 +83,12 @@ input[type=button] {
   border: 1px;
   padding: 10px;
   text-decoration: none;
-  /* margin: 4px 2px; */
   cursor: pointer;
   border-radius: 5px;
   font-family: 'Lato';
   max-width: 200px;
   white-space: normal;
-word-wrap: break-word;
-
+  word-wrap: break-word;
 }
 
 #leg_container, #d3-militarization {
