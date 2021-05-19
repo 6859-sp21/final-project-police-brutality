@@ -30,7 +30,7 @@ section {
 }
 
 section.active {
-  opacity: 1;
+  opacity: 0.95;
   transition: opacity 0.5s;
   -webkit-transition: opacity 0.5s;
 }
@@ -138,4 +138,12 @@ ul {
 
 .authors {
   font-style: italic;
+}
+
+#d3-calendar {
+  align-items: flex-start;
+}
+
+.month {
+  margin: 5px;
 }

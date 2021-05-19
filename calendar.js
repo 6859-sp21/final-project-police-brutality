@@ -9,7 +9,7 @@ function drawCalendar(myData) {
   var maxDate = new Date(2021, 3, 21);
 
   var cellMargin = 2,
-      cellSize = 30;
+      cellSize = 20;
 
   var day = d3.timeFormat("%w"),
       week = d3.timeFormat("%U"),
