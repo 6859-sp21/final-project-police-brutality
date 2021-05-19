@@ -184,12 +184,12 @@ var chapters = {
       pitch: 0.00,
       bearing: 0.00
     },
-    // 'world-issue': {
-    //   center: {lon: -100.63789, lat: 39.96627},
-    //     zoom: 4.09,
-    //     pitch: 0.00,
-    //     bearing: 0.00
-    // },
+    'next': {
+      center: {lon: -108.63789, lat: 40.96627},
+      zoom: 3.90,
+      pitch: 0.00,
+      bearing: 0.00
+    },
     'resources': {
       center: {lon: -108.63789, lat: 40.96627},
       zoom: 3.90,
