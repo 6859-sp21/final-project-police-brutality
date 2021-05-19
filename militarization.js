@@ -25,7 +25,7 @@ d3.csv("https://raw.githubusercontent.com/6859-sp21/final-project-police-brutali
   // color palette
   var color = d3.scaleOrdinal()
     .domain(keys)
-    .range(d3.schemeSet2);
+    .range(["#fd2c3b", "#e6bcbe", "#613d38", "#f9793b", "#8e1023", "#fb899b", "#aa7959"]);
 
   //stack the data?
   var stackedData = d3.stack()
