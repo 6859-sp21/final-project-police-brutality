@@ -316,8 +316,8 @@ function d3_militarization() {
 
     // Add X axis label:
     svg.append("text")
-        .attr("text-anchor", "end")
-        .attr("x", width)
+        .attr("text-anchor", "middle")
+        .attr("x", width/2)
         .attr("y", height+40 )
         .text("Year");
 
