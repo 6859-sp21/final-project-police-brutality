@@ -11,7 +11,7 @@ Readme File: In the repository’s readme.md, include a breakdown of how the wor
 Abstract:
 The authors employ scrollytelling over a map of the United States with a red marker at the location of every fatal police shooting since 2015 to walk the user through various layers of police brutality. Sub-visualizations are provided to support the exploration and case studies are presented as a connection to fatal police shootings that the user might be familiar with. Recognizing that the user likely understands that police brutality is a serious issue, the authors aim to broaden and deepen this understanding by exploring main facets such as marginalized communities and police militarization.
 
-Link to paper: 
+Link to paper: The paper is within the project, at FinalPaper.pdf.
 
 The video can be found [here](https://www.loom.com/share/9ea3c7949bd44d97bdadd98e91ec6724).
 
