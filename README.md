@@ -18,7 +18,7 @@ The video can be found [here](https://www.loom.com/share/9ea3c7949bd44d97bdadd98
 Running instructions: Simply download this Github repo and open up index.html.
 
 
-## Process
+## Project Details
 ### Commentary on Project Process
 The project initially started as an exploration into voter turnout, but the authors shifted to the topic of police brutality because they wanted to tackle an issue more present in the news and understand the relationship that visualizations might have with such an issue. The authors were first focused on the few intense cases that had been the driving force of most police reform conversations throughout the past year, with the killings of George Floyd, Breonna Taylor, Adam Toledo, and countless more. 
 
